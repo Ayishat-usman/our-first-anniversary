@@ -1,9 +1,8 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>For my favourite person ♥</title>
 
 <style>
@@ -24,10 +23,9 @@ body {
   background:var(--deep);
   color:var(--cream);
   font-family:Georgia,serif;
-  overflow-x:hidden;
 }
 
-button { cursor:pointer; font-family:inherit; }
+button { cursor:pointer; }
 
 .screen {
   min-height:100svh;
@@ -41,7 +39,7 @@ button { cursor:pointer; font-family:inherit; }
 .inner { max-width:680px; }
 
 .eyebrow {
-  font:10px Arial,sans-serif;
+  font:10px Arial;
   letter-spacing:.3em;
   color:var(--gold);
   text-transform:uppercase;
@@ -69,14 +67,9 @@ p { line-height:1.9; }
   border:1px solid var(--gold);
   color:var(--cream);
   padding:15px 25px;
-  font:10px Arial,sans-serif;
+  font:10px Arial;
   letter-spacing:.15em;
   text-transform:uppercase;
-}
-
-.cta:hover {
-  background:var(--gold);
-  color:var(--deep);
 }
 
 .hidden { display:none!important; }
@@ -100,12 +93,12 @@ p { line-height:1.9; }
 .display {
   color:var(--gold);
   letter-spacing:.35em;
-  font:18px Arial,sans-serif;
+  font:18px Arial;
 }
 
 .error {
   color:#ffb4b4;
-  font:12px Arial,sans-serif;
+  font:12px Arial;
   min-height:20px;
 }
 
@@ -116,19 +109,18 @@ nav {
   padding:16px 5%;
   display:flex;
   justify-content:space-between;
-  align-items:center;
   z-index:10;
 }
 
 .brand {
-  font:10px Arial,sans-serif;
+  font:10px Arial;
   letter-spacing:.2em;
   color:var(--gold);
 }
 
 nav a {
   color:var(--cream);
-  font:9px Arial,sans-serif;
+  font:9px Arial;
   text-decoration:none;
   margin-left:12px;
 }
@@ -152,7 +144,7 @@ section {
 
 .head p {
   color:#cbbab6;
-  font:12px Arial,sans-serif;
+  font:12px Arial;
   line-height:1.8;
 }
 
@@ -170,28 +162,68 @@ section {
   gap:15px;
 }
 
-.moment,.music {
-  background:#321522;
-  border:1px solid #c9a56a55;
-  padding:24px;
+/* ORIGINAL STORY CARD DESIGN, WITH FLIP EFFECT */
+
+.story-card {
+  height:230px;
+  perspective:1000px;
+  cursor:pointer;
 }
 
-.moment small {
-  display:block;
+.story-card-inner {
+  position:relative;
+  width:100%;
+  height:100%;
+  transition:transform .7s ease;
+  transform-style:preserve-3d;
+}
+
+.story-card.flipped .story-card-inner {
+  transform:rotateY(180deg);
+}
+
+.story-front,
+.story-back {
+  position:absolute;
+  inset:0;
+  padding:24px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  border:1px solid #c9a56a55;
+  background:linear-gradient(145deg,#3a1724,#28101a);
+  backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
+  border-radius:2px;
+}
+
+.story-front small {
   color:var(--gold);
-  font:9px Arial,sans-serif;
+  font:9px Arial;
   letter-spacing:.17em;
 }
 
-.moment h3 {
+.story-front h3 {
   font-size:24px;
   font-weight:normal;
+  margin:16px 0 8px;
 }
 
-.moment p {
-  font:12px/1.8 Arial,sans-serif;
+.story-front .tap {
   color:#cbbab6;
+  font:10px Arial;
+  margin-top:10px;
 }
+
+.story-back {
+  transform:rotateY(180deg);
+  background:var(--cream);
+  color:var(--wine);
+  font:13px/1.8 Arial;
+  text-align:center;
+}
+
+/* ENVELOPE AND LETTER */
 
 .envelope {
   width:min(340px,85vw);
@@ -234,9 +266,11 @@ section {
   color:var(--wine);
 }
 
+/* PHOTO GALLERY */
+
 .gallery {
   display:grid;
-  grid-template-columns:repeat(2,1fr);
+  grid-template-columns:repeat(4,1fr);
   gap:12px;
 }
 
@@ -256,20 +290,19 @@ section {
 
 /* NICKNAME FLIP CARDS */
 
-.nickname-grid {
+.reasons {
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:15px;
 }
 
-.flip-card {
+.nickname-card {
   height:175px;
   perspective:1000px;
   cursor:pointer;
-  -webkit-tap-highlight-color:transparent;
 }
 
-.flip-inner {
+.nickname-inner {
   position:relative;
   width:100%;
   height:100%;
@@ -277,12 +310,12 @@ section {
   transform-style:preserve-3d;
 }
 
-.flip-card.flipped .flip-inner {
+.nickname-card.flipped .nickname-inner {
   transform:rotateY(180deg);
 }
 
-.flip-front,
-.flip-back {
+.nickname-front,
+.nickname-back {
   position:absolute;
   inset:0;
   display:flex;
@@ -292,45 +325,42 @@ section {
   text-align:center;
   padding:17px;
   border:1px solid var(--gold);
-  border-radius:12px;
   backface-visibility:hidden;
   -webkit-backface-visibility:hidden;
+  border-radius:2px;
 }
 
-.flip-front {
+.nickname-front {
   background:#321522;
   color:var(--gold);
   font-size:19px;
 }
 
-.flip-front small {
-  font:9px Arial,sans-serif;
-  letter-spacing:.16em;
-  color:#d9b8a5;
+.nickname-front small {
+  font:9px Arial;
+  letter-spacing:.15em;
   margin-top:12px;
+  color:#eadbd5;
 }
 
-.flip-back {
+.nickname-back {
   background:var(--cream);
   color:var(--wine);
   transform:rotateY(180deg);
-  font-size:13px;
-  line-height:1.6;
+  font:13px/1.7 Arial;
 }
 
-.flip-back span {
-  display:block;
-  color:#a36b59;
-  font-size:19px;
-  margin-bottom:9px;
-}
+/* MUSIC */
 
 .music {
+  background:#321522;
+  border:1px solid #c9a56a55;
+  padding:24px;
   text-align:center;
 }
 
 .music p {
-  font:12px Arial,sans-serif;
+  font:12px Arial;
   color:#cbbab6;
 }
 
@@ -338,6 +368,8 @@ section {
   width:min(420px,100%);
   margin-top:12px;
 }
+
+/* ENDING */
 
 .final {
   text-align:center;
@@ -360,40 +392,49 @@ footer {
   text-align:center;
   padding:25px;
   color:#9f8588;
-  font:9px Arial,sans-serif;
+  font:9px Arial;
   letter-spacing:.15em;
 }
 
-/* GENTLE FLOATING HEARTS AND ROSE PETALS */
+/* SOFT FALLING ROSE PETALS */
 
-.floating-decoration {
+.petal {
   position:fixed;
   top:-30px;
   z-index:20;
   pointer-events:none;
+  color:#d9a6a9;
+  opacity:.65;
   animation:fall linear forwards;
-  opacity:.75;
 }
 
 @keyframes fall {
-  0% {
-    transform:translateY(-30px) rotate(0deg);
-    opacity:0;
-  }
-  10% { opacity:.75; }
-  100% {
-    transform:translateY(110vh) rotate(360deg);
+  to {
+    transform:translateY(110vh) rotate(480deg);
     opacity:0;
   }
 }
 
 @media(max-width:650px) {
-  .timeline { grid-template-columns:1fr; }
-  .nickname-grid { grid-template-columns:repeat(2,1fr); }
-  .gallery { grid-template-columns:repeat(2,1fr); }
+  .timeline,
+  .reasons {
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .gallery {
+    grid-template-columns:repeat(2,1fr);
+  }
+
   section { padding:65px 6%; }
-  nav a { margin-left:7px; font-size:8px; }
-  .flip-card { height:165px; }
+
+  .story-card { height:245px; }
+}
+
+@media(max-width:380px) {
+  .timeline,
+  .reasons {
+    grid-template-columns:1fr;
+  }
 }
 </style>
 </head>
@@ -406,7 +447,10 @@ footer {
   <div class="inner">
     <div class="eyebrow">A little universe made for us</div>
     <h1>For my<br><em>favourite person.</em></h1>
-    <p class="lead">Some stories are too special to be told to just anyone. So I made a little place that belongs only to us.</p>
+    <p class="lead">
+      Some stories are too special to be told to just anyone.
+      So I made a little place that belongs only to us.
+    </p>
     <button class="cta" onclick="showGate()">Enter our little world</button>
   </div>
 </div>
@@ -417,7 +461,7 @@ footer {
   <div class="inner">
     <div class="eyebrow">A little something to remember</div>
     <h1>Before you<br><em>come in...</em></h1>
-    <p>Think of the date it all began for us.</p>
+    <p>Think of the date it all started for us.</p>
 
     <div class="display" id="display">••••••••</div>
 
@@ -457,7 +501,9 @@ footer {
   <div>
     <div class="eyebrow">05 · 11 · 2026</div>
     <h1>Happy first<br><em>anniversary,</em><br>Baby Bear.</h1>
-    <p class="lead">365 days. A thousand little moments. And a story that is ours.</p>
+    <p class="lead">
+      365 days. A thousand little moments. And a story that is ours.
+    </p>
     <div class="eyebrow">BUNNY BEAR ♥ BABY BEAR</div>
   </div>
 </header>
@@ -467,78 +513,90 @@ footer {
     <div class="eyebrow">Chapter one · 365 days</div>
     <h2>And then there was us.</h2>
   </div>
-  <p class="intro">Out of all the people and all the possibilities, somehow I found you. What began with a swipe became a story across countries, a birthday visit I will always remember, and a year of learning what it means to choose each other.</p>
+
+  <p class="intro">
+    Out of all the people and all the possibilities, somehow I found you.
+    What began with a swipe became a story across countries, a birthday
+    visit I will always remember, and a year of learning what it means
+    to choose each other.
+  </p>
 </section>
 
-<!-- OUR STORY -->
+<!-- OUR STORY: THESE FOUR CARDS NOW FLIP OPEN -->
 
 <section id="story">
   <div class="head">
     <div class="eyebrow">The beginning of us</div>
     <h2>Our story, in little chapters</h2>
+    <p>Tap each chapter and turn the page.</p>
   </div>
 
- <div class="timeline">
+  <div class="timeline">
 
-  <div class="story-flip-card" onclick="this.classList.toggle('flipped')">
-    <div class="story-flip-inner">
-      <div class="story-flip-front">
-        <h3>Chapter One</h3>
-        <p>Where It All Began</p>
-        <span class="story-flip-hint">Tap to open ♡</span>
-      </div>
-      <div class="story-flip-back">
-        <h3>Where It All Began</h3>
-        <p>YOUR ORIGINAL CHAPTER ONE PARAGRAPH GOES HERE.</p>
+    <div class="story-card" onclick="flipStory(this)">
+      <div class="story-card-inner">
+        <div class="story-front">
+          <small>CHAPTER 01 · THE FIRST SPARK</small>
+          <h3>The dating app</h3>
+          <div class="tap">Tap to turn the page ♥</div>
+        </div>
+        <div class="story-back">
+          I saw you on a dating app. You caught my attention enough
+          that I deactivated it. Something about you made me want
+          to find out who you were.
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="story-flip-card" onclick="this.classList.toggle('flipped')">
-    <div class="story-flip-inner">
-      <div class="story-flip-front">
-        <h3>Chapter Two</h3>
-        <p>From a Message to Something More</p>
-        <span class="story-flip-hint">Tap to open ♡</span>
-      </div>
-      <div class="story-flip-back">
-        <h3>From a Message to Something More</h3>
-        <p>YOUR ORIGINAL CHAPTER TWO PARAGRAPH GOES HERE.</p>
+    <div class="story-card" onclick="flipStory(this)">
+      <div class="story-card-inner">
+        <div class="story-front">
+          <small>CHAPTER 02 · INSTAGRAM ERA</small>
+          <h3>A little persistence</h3>
+          <div class="tap">Tap to turn the page ♥</div>
+        </div>
+        <div class="story-back">
+          Then came Instagram: the follow, the likes, and finally
+          the message. You were in the USA; I was in the UK.
+          Distance was part of the beginning, not the ending.
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="story-flip-card" onclick="this.classList.toggle('flipped')">
-    <div class="story-flip-inner">
-      <div class="story-flip-front">
-        <h3>Chapter Three</h3>
-        <p>Two Countries, One Connection</p>
-        <span class="story-flip-hint">Tap to open ♡</span>
-      </div>
-      <div class="story-flip-back">
-        <h3>Two Countries, One Connection</h3>
-        <p>YOUR ORIGINAL CHAPTER THREE PARAGRAPH GOES HERE.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="story-flip-card" onclick="this.classList.toggle('flipped')">
-    <div class="story-flip-inner">
-      <div class="story-flip-front">
-        <h3>Chapter Four</h3>
-        <p>Our First Year Together</p>
-        <span class="story-flip-hint">Tap to open ♡</span>
-      </div>
-      <div class="story-flip-back">
-        <h3>Our First Year Together</h3>
-        <p>YOUR ORIGINAL CHAPTER FOUR PARAGRAPH GOES HERE.</p>
+    <div class="story-card" onclick="flipStory(this)">
+      <div class="story-card-inner">
+        <div class="story-front">
+          <small>CHAPTER 03 · A BIRTHDAY TO REMEMBER</small>
+          <h3>New Orleans to me</h3>
+          <div class="tap">Tap to turn the page ♥</div>
+        </div>
+        <div class="story-back">
+          You travelled all the way from New Orleans to come see
+          me on my birthday in 2024. That kind of effort becomes
+          a memory you carry with you.
+        </div>
       </div>
     </div>
+
+    <div class="story-card" onclick="flipStory(this)">
+      <div class="story-card-inner">
+        <div class="story-front">
+          <small>CHAPTER 04 · OUR CHAPTER</small>
+          <h3>Here we are</h3>
+          <div class="tap">Tap to turn the page ♥</div>
+        </div>
+        <div class="story-back">
+          Different moments, different lessons, laughter,
+          affection, hard days and beautiful ones.
+          One year into a story that is still being written.
+        </div>
+      </div>
+    </div>
+
   </div>
+</section>
 
-</div>
-
-<!-- LETTER -->
+<!-- ORIGINAL ENVELOPE AND LETTER -->
 
 <section id="letter">
   <div class="head">
@@ -557,6 +615,7 @@ footer {
 
   <article class="letter" id="letterCard">
     <h3>My love,</h3>
+
 It's been kind of a rough year for us two, but somehow, we managed to scale through the hard times, even those moments when we didn't know what we felt towards each other or where we stood. There were days we understood each other, and days we couldn't seem to get it right. We've had our differences, our moments of anger, misunderstandings, and times when loving each other wasn't as easy as it should have been, but through it all, we kept finding our way back to each other.
 
 It's been 365 days of a rollercoaster of love, laughter, anger, and unforgettable memories with you. And though I don't know exactly where this is going, I know this year has been one of learning, not just about you, but about myself, about us, and about what it means to love someone who sees the world differently from you.
@@ -573,119 +632,109 @@ Happy anniversary, Mon amour. ❤️
   </article>
 </section>
 
-<!-- PHOTO GALLERY -->
+<!-- FOUR PHOTOS -->
 
 <section id="memories">
   <div class="head">
     <div class="eyebrow">Little pieces of us</div>
     <h2>Our memory gallery</h2>
-    <p>Every picture holds a little piece of our story.</p>
   </div>
 
   <div class="gallery">
-     <div class="photo">
-      <img src="ImG_3345.jpg" alt="A memory together">
+    <div class="photo">
+      <img src="Tezza-2951.JPG" alt="Our memory">
     </div>
     <div class="photo">
-      <img src="Tezza-2951.JPG" alt="A memory together">
+      <img src="Tezza-2320.JPG" alt="Our memory">
     </div>
     <div class="photo">
-      <img src="Tezza-2320.JPG" alt="A memory together">
+      <img src="Tezza-5458.JPG" alt="Our memory">
     </div>
     <div class="photo">
-      <img src="Tezza-5458.JPG" alt="A memory together">
-    </div>
-    <div class="photo">
-      <img src="ImG_2505.jpg" alt="A memory together">
+      <img src="ImG_2505.jpg" alt="Our memory">
     </div>
   </div>
 </section>
 
-<!-- NICKNAME FLIP CARDS -->
+<!-- NICKNAME CARDS: KEEP THEIR FLIP INTERACTION -->
 
-<section id="littlethings">
+<section>
   <div class="head">
     <div class="eyebrow">A few little truths</div>
-    <h2>Our little names for each other.</h2>
-    <p>Tap a nickname and let it turn over. There's a little message waiting on the other side. ♥</p>
+    <h2>Reasons, reminders & little things</h2>
+    <p>Tap each nickname and let it turn into a little reminder.</p>
   </div>
 
-  <div class="nickname-grid">
+  <div class="reasons">
 
-    <div class="flip-card" onclick="flipCard(this)">
-      <div class="flip-inner">
-        <div class="flip-front">
+    <div class="nickname-card" onclick="flipNickname(this)">
+      <div class="nickname-inner">
+        <div class="nickname-front">
           Bunny Bear
-          <small>TAP TO TURN ♥</small>
+          <small>TAP TO OPEN ♥</small>
         </div>
-        <div class="flip-back">
-          <span>♥</span>
-          My sweet Bunny Bear. One of the little names that will always make me smile because it belongs to you.
+        <div class="nickname-back">
+          My soft spot, my sweetness, and one of my favourite names for you.
         </div>
       </div>
     </div>
 
-    <div class="flip-card" onclick="flipCard(this)">
-      <div class="flip-inner">
-        <div class="flip-front">
+    <div class="nickname-card" onclick="flipNickname(this)">
+      <div class="nickname-inner">
+        <div class="nickname-front">
           Baby Bear
-          <small>TAP TO TURN ♥</small>
+          <small>TAP TO OPEN ♥</small>
         </div>
-        <div class="flip-back">
-          <span>♥</span>
-          My Baby Bear. My favourite person to call mine, and someone who has made this chapter unforgettable.
+        <div class="nickname-back">
+          A name that feels like warmth, comfort, and a little piece of home.
         </div>
       </div>
     </div>
 
-    <div class="flip-card" onclick="flipCard(this)">
-      <div class="flip-inner">
-        <div class="flip-front">
+    <div class="nickname-card" onclick="flipNickname(this)">
+      <div class="nickname-inner">
+        <div class="nickname-front">
           Mhiz Leo
-          <small>TAP TO TURN ♥</small>
+          <small>TAP TO OPEN ♥</small>
         </div>
-        <div class="flip-back">
-          <span>♥</span>
-          Mhiz Leo, there's only one you. I love the little things that make you exactly who you are.
+        <div class="nickname-back">
+          One of a kind. There is nobody quite like you, and I wouldn't want there to be.
         </div>
       </div>
     </div>
 
-    <div class="flip-card" onclick="flipCard(this)">
-      <div class="flip-inner">
-        <div class="flip-front">
+    <div class="nickname-card" onclick="flipNickname(this)">
+      <div class="nickname-inner">
+        <div class="nickname-front">
           Cup Cake
-          <small>TAP TO TURN ♥</small>
+          <small>TAP TO OPEN ♥</small>
         </div>
-        <div class="flip-back">
-          <span>♥</span>
-          My Cup Cake. A sweet little name for someone who has a very special place in my heart.
+        <div class="nickname-back">
+          A little sweetness in my life, even on the days that need a little extra sweetness.
         </div>
       </div>
     </div>
 
-    <div class="flip-card" onclick="flipCard(this)">
-      <div class="flip-inner">
-        <div class="flip-front">
+    <div class="nickname-card" onclick="flipNickname(this)">
+      <div class="nickname-inner">
+        <div class="nickname-front">
           Favourite Trouble
-          <small>TAP TO TURN ♥</small>
+          <small>TAP TO OPEN ♥</small>
         </div>
-        <div class="flip-back">
-          <span>♥</span>
-          My favourite trouble. You know how to get under my skin, but somehow you still make me smile.
+        <div class="nickname-back">
+          You know how to keep life interesting. Even your little trouble has a special place in my heart.
         </div>
       </div>
     </div>
 
-    <div class="flip-card" onclick="flipCard(this)">
-      <div class="flip-inner">
-        <div class="flip-front">
+    <div class="nickname-card" onclick="flipNickname(this)">
+      <div class="nickname-inner">
+        <div class="nickname-front">
           Favourite Notification
-          <small>TAP TO TURN ♥</small>
+          <small>TAP TO OPEN ♥</small>
         </div>
-        <div class="flip-back">
-          <span>♥</span>
-          Because out of all the notifications on my phone, yours is still the one I love seeing most.
+        <div class="nickname-back">
+          Out of every notification on my phone, yours is still the one I love seeing most.
         </div>
       </div>
     </div>
@@ -697,24 +746,31 @@ Happy anniversary, Mon amour. ❤️
 
 <section>
   <div class="head">
-    <div class="eyebrow"> soundtrack</div>
+    <div class="eyebrow">Our soundtrack</div>
     <h2>Godspeed.</h2>
     <p>Frank Ocean · A song for this little world of ours.</p>
   </div>
 
   <div class="music">
     <div style="font-size:32px;color:var(--gold)">♫</div>
-    <p>Press play and let this song be part of our little anniversary moment.</p>
+    <p>Our little soundtrack.</p>
     <audio id="player" src="godspeed.mp3" controls loop preload="none"></audio>
   </div>
 </section>
 
-<!-- FINAL MESSAGE -->
+<!-- ENDING -->
 
 <div class="final">
   <div class="eyebrow">To be continued · Chapter two</div>
   <h2>Still my favourite<br><em>story.</em></h2>
-  <p>To my Bunny Bear, my Baby Bear, my Mhiz Leo, my Cup Cake, my Favourite Trouble, my Favourite Notification — thank you for being part of this chapter. Whatever the next pages hold, this first year will always be ours.</p>
+
+  <p>
+    To my Bunny Bear, my Baby Bear, my Mhiz Leo, my Cup Cake,
+    my Favourite Trouble, my Favourite Notification — thank you
+    for being part of this chapter. Whatever the next pages hold,
+    this first year will always be ours.
+  </p>
+
   <div class="eyebrow">05 · 11 · 2026 ♥</div>
 </div>
 
@@ -764,42 +820,37 @@ function checkPin() {
   }
 }
 
+/* FLIP THE STORY CHAPTERS */
+function flipStory(card) {
+  card.classList.toggle('flipped');
+}
+
+/* FLIP THE NICKNAME CARDS */
+function flipNickname(card) {
+  card.classList.toggle('flipped');
+}
+
+/* OPEN THE ORIGINAL ANNIVERSARY LETTER */
 function openLetter() {
   const letter = document.getElementById('letterCard');
   letter.classList.add('show');
   letter.scrollIntoView({behavior:'smooth',block:'center'});
 }
 
-/* NICKNAME CARDS: FLIP OPEN ON TAP */
+/* SOFT FALLING ROSE PETALS */
+function createPetal() {
+  const petal = document.createElement('div');
+  petal.className = 'petal';
+  petal.textContent = '✿';
+  petal.style.left = Math.random() * 100 + 'vw';
+  petal.style.fontSize = (12 + Math.random() * 12) + 'px';
+  petal.style.animationDuration = (8 + Math.random() * 7) + 's';
+  document.body.appendChild(petal);
 
-function flipCard(card) {
-  card.classList.toggle('flipped');
+  setTimeout(() => petal.remove(),16000);
 }
 
-/* FLOATING HEARTS AND ROSE PETALS */
-
-function createDecoration() {
-  if (document.getElementById('experience').classList.contains('hidden')) {
-    return;
-  }
-
-  const decoration = document.createElement('div');
-  decoration.className = 'floating-decoration';
-
-  const decorations = ['♥','♡','🌹','✿'];
-  decoration.textContent =
-    decorations[Math.floor(Math.random()*decorations.length)];
-
-  decoration.style.left = Math.random()*100 + 'vw';
-  decoration.style.fontSize = (12 + Math.random()*14) + 'px';
-  decoration.style.animationDuration = (7 + Math.random()*7) + 's';
-
-  document.body.appendChild(decoration);
-
-  setTimeout(() => decoration.remove(),15000);
-}
-
-setInterval(createDecoration,900);
+setInterval(createPetal,1300);
 </script>
 
 </body>
