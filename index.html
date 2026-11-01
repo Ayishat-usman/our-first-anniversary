@@ -1,532 +1,215 @@
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>For my favourite person ♥</title>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#451522">
+<title>Happy Anniversary, My Love</title>
 <style>
 :root {
-  --wine:#5b1d32;
-  --deep:#210d14;
-  --cream:#f7efe5;
-  --gold:#c9a56a;
-  --rose:#d9a6a9;
+  --wine:#451522; --deep:#260b15; --rose:#8e4054;
+  --cream:#fff8ef; --gold:#d8b77b; --muted:#cdb9b2;
 }
-
-* { box-sizing:border-box; }
-
-body {
-  margin:0;
-  background:var(--deep);
-  color:var(--cream);
-  font-family:Georgia,serif;
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--deep);color:var(--cream);
+  font-family:Georgia,'Times New Roman',serif;
 }
-
-button { cursor:pointer; }
-
-.hidden { display:none!important; }
-
-.screen {
-  min-height:100svh;
-  display:grid;
-  place-items:center;
-  text-align:center;
-  padding:30px 20px;
-  background:radial-gradient(ellipse,#6c293c,#351421 48%,#210d14 80%);
+button,input{font:inherit}
+button{cursor:pointer}
+.screen{
+  min-height:100vh;display:flex;align-items:center;
+  justify-content:center;padding:30px 20px;
 }
-
-.inner { max-width:680px; }
-
-.eyebrow {
-  font:10px Arial;
-  letter-spacing:.3em;
-  color:var(--gold);
-  text-transform:uppercase;
+.panel{
+  width:min(100%,680px);text-align:center;padding:48px 25px;
+  border:1px solid rgba(216,183,123,.45);
+  background:linear-gradient(145deg,#54202f,#2b0d18);
+  box-shadow:0 20px 70px #0006;
 }
-
-h1 {
-  font-size:clamp(48px,10vw,90px);
-  font-weight:normal;
-  line-height:1;
-  margin:24px 0;
+.eyebrow{
+  color:var(--gold);letter-spacing:4px;text-transform:uppercase;
+  font-size:11px;
 }
-
-em { color:var(--rose); }
-
-p { line-height:1.9; }
-
-.lead {
-  max-width:520px;
-  color:#eadbd5;
-  margin:20px auto 30px;
+h1{font-size:clamp(40px,9vw,76px);font-weight:normal;margin:22px 0}
+h2{font-size:clamp(30px,6vw,48px);font-weight:normal}
+p{line-height:1.9}
+.gold{color:var(--gold)}
+.small{font-size:13px;color:var(--muted)}
+input{
+  width:min(100%,280px);padding:15px;margin:18px 0;
+  text-align:center;letter-spacing:7px;background:#fff9f1;
+  color:var(--wine);border:1px solid var(--gold);outline:none;
 }
-
-.cta {
-  background:transparent;
-  border:1px solid var(--gold);
-  color:var(--cream);
-  padding:15px 25px;
-  font:10px Arial;
-  letter-spacing:.15em;
-  text-transform:uppercase;
+.btn{
+  display:inline-block;padding:14px 26px;background:var(--gold);
+  color:var(--deep);border:0;letter-spacing:1px;
+  transition:.25s;
 }
-
-.keypad {
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:9px;
-  max-width:280px;
-  margin:24px auto;
+.btn:hover{transform:translateY(-3px);background:#f0d6a2}
+.hidden{display:none!important}
+#main{display:none}
+nav{
+  position:sticky;top:0;z-index:5;background:#260b15ed;
+  border-bottom:1px solid #d8b77b55;padding:14px;
+  display:flex;justify-content:center;gap:20px;flex-wrap:wrap;
 }
-
-.key {
-  padding:17px;
-  background:var(--cream);
-  color:var(--wine);
-  border:0;
-  font-size:20px;
+nav a{color:var(--cream);text-decoration:none;font-size:12px;letter-spacing:1px}
+section{padding:90px 22px;max-width:900px;margin:auto;text-align:center}
+.hero{
+  min-height:90vh;display:flex;flex-direction:column;
+  justify-content:center;align-items:center;
+  background:radial-gradient(ellipse at center,#713044 0%,#451522 45%,#260b15 100%);
 }
-
-.display {
-  color:var(--gold);
-  letter-spacing:.35em;
-  font:18px Arial;
-}
-
-.error {
-  color:#ffb4b4;
-  font:12px Arial;
-  min-height:20px;
-}
-
-nav {
-  position:sticky;
-  top:0;
-  background:#210d14f2;
-  padding:16px 5%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  z-index:3;
-}
-
-.brand {
-  font:10px Arial;
-  letter-spacing:.2em;
-  color:var(--gold);
-}
-
-nav a {
-  color:var(--cream);
-  font:9px Arial;
-  text-decoration:none;
-  margin-left:12px;
-}
-
-section {
-  max-width:1000px;
-  margin:auto;
-  padding:75px 7%;
-}
-
-.head {
-  text-align:center;
-  margin-bottom:35px;
-}
-
-.head h2 {
-  font-size:clamp(34px,6vw,55px);
-  font-weight:normal;
-  margin:12px;
-}
-
-.head p {
-  color:#cbbab6;
-  font:12px Arial;
-  line-height:1.8;
-}
-
-.intro {
-  text-align:center;
-  font-size:23px;
-  line-height:1.9;
-  max-width:760px;
-  margin:auto;
-}
-
-.timeline {
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:15px;
-}
-
-.moment,.reason,.music {
-  background:#321522;
-  border:1px solid #c9a56a55;
-  padding:24px;
-}
-
-.moment small,.reason span {
-  display:block;
-  color:var(--gold);
-  font:9px Arial;
-  letter-spacing:.17em;
-}
-
-.moment h3 {
-  font-size:24px;
-  font-weight:normal;
-}
-
-.moment p {
-  font:12px/1.8 Arial;
-  color:#cbbab6;
-}
-
-.envelope {
-  width:min(340px,85vw);
-  height:210px;
-  background:#ead8c5;
-  border:1px solid var(--gold);
-  display:grid;
-  place-items:center;
-  margin:20px auto;
-  box-shadow:0 20px 55px #0006;
-}
-
-.seal {
-  background:var(--wine);
-  border-radius:50%;
-  width:55px;
-  height:55px;
-  display:grid;
-  place-items:center;
-  color:white;
-  font-size:24px;
-}
-
-.letter {
-  display:none;
-  background:#f5eadc;
-  color:#38202a;
-  padding:clamp(22px,5vw,45px);
-  max-width:720px;
-  margin:20px auto;
-  line-height:1.95;
-  white-space:pre-line;
-}
-
-.letter.show { display:block; }
-
-.letter h3 {
-  font-size:30px;
-  font-weight:normal;
-  color:var(--wine);
-}
-
-/* PERMANENT PHOTO GALLERY */
-
-.gallery {
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:15px;
-}
-
-.photo {
-  aspect-ratio:4/5;
-  background:linear-gradient(145deg,#6a3042,#2a111c);
-  border:1px solid #c9a56a55;
-  overflow:hidden;
+.hero h1{max-width:760px}
+.date{color:var(--gold);letter-spacing:4px}
+.divider{width:65px;height:1px;background:var(--gold);margin:30px auto}
+.timeline{max-width:620px;margin:40px auto;text-align:left}
+.event{
+  border-left:1px solid var(--gold);padding:5px 0 30px 25px;
   position:relative;
 }
-
-.photo img {
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  display:block;
-  transition:transform .5s;
+.event:before{
+  content:"";position:absolute;left:-5px;top:8px;width:9px;height:9px;
+  border-radius:50%;background:var(--gold);
 }
-
-.photo:hover img {
-  transform:scale(1.04);
+.event h3{color:var(--gold);font-weight:normal}
+.letter-wrap{max-width:650px;margin:35px auto}
+.envelope{
+  border:1px solid var(--gold);padding:35px 20px;
+  background:#fff8ef;color:var(--wine);cursor:pointer;
+  transition:.3s;
 }
-
-.photo-caption {
-  text-align:center;
-  color:var(--gold);
-  font:11px Arial;
-  letter-spacing:.08em;
-  padding:12px 5px 0;
+.envelope:hover{transform:translateY(-5px)}
+.letter{
+  display:none;text-align:left;background:#fff8ef;color:#49202b;
+  padding:30px 24px;margin-top:15px;line-height:1.9;
+  white-space:pre-line;
 }
-
-.photo-error {
-  display:none;
-  position:absolute;
-  inset:0;
-  place-items:center;
-  text-align:center;
-  padding:15px;
-  color:#eadbd5;
-  font:11px Arial;
-  background:#321522;
+.letter.open{display:block;animation:fade .8s}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:15px;margin-top:30px;
 }
-
-/* SIX PERSONAL REVEAL CARDS */
-
-.reasons {
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
+.memory{
+  min-height:180px;border:1px solid #d8b77b66;
+  background:linear-gradient(145deg,#713044,#35101e);
+  display:flex;align-items:center;justify-content:center;
+  flex-direction:column;padding:20px;
 }
-
-.reason {
-  color:var(--cream);
-  font:17px Georgia;
-  line-height:1.6;
-  min-height:115px;
+.memory input{width:100%;letter-spacing:0}
+.memory img{width:100%;height:220px;object-fit:cover}
+.reason{
+  border:1px solid #d8b77b77;padding:25px;
+  background:#ffffff09;line-height:1.7;
 }
-
-.reason span { margin-bottom:10px; }
-
-.reason.revealed {
-  color:#eadbd5;
-  border-color:var(--gold);
-}
-
-.music { text-align:center; }
-
-.music p {
-  font:12px Arial;
-  color:#cbbab6;
-}
-
-.music audio {
-  width:min(420px,100%);
-  margin-top:12px;
-}
-
-.music-button {
-  display:inline-block;
-  margin-top:15px;
-  background:transparent;
-  border:1px solid var(--gold);
-  color:var(--cream);
-  padding:12px 22px;
-  font:10px Arial;
-  letter-spacing:.15em;
-  text-transform:uppercase;
-}
-
-.final {
-  text-align:center;
-  padding:100px 20px;
-  background:radial-gradient(ellipse,#64263a,#210d14 75%);
-}
-
-.final h2 {
-  font-size:clamp(42px,8vw,75px);
-  font-weight:normal;
-}
-
-.final p {
-  max-width:560px;
-  margin:20px auto;
-  color:#eadbd5;
-}
-
-footer {
-  text-align:center;
-  padding:25px;
-  color:#9f8588;
-  font:9px Arial;
-  letter-spacing:.15em;
-}
-
-/* ROSE PETALS AND FLOATING HEARTS */
-
-.petal {
-  position:fixed;
-  top:-35px;
-  z-index:5;
-  pointer-events:none;
-  animation:fall linear forwards;
-}
-
-@keyframes fall {
-  to {
-    transform:translateY(110vh) rotate(420deg);
-    opacity:0;
-  }
-}
-
-@media(max-width:650px) {
-  .timeline,.reasons { grid-template-columns:1fr; }
-  .gallery { grid-template-columns:repeat(2,minmax(0,1fr)); }
-  section { padding:65px 6%; }
-  nav { flex-wrap:wrap; gap:10px; }
-  nav a { margin-left:7px; }
+footer{padding:50px 20px;text-align:center;color:var(--muted)}
+#message{color:#f1c5c5;min-height:22px}
+@media(max-width:500px){
+ section{padding:65px 20px}
+ nav{gap:13px}
+ .panel{padding:40px 18px}
 }
 </style>
 </head>
-
 <body>
 
-<!-- ORIGINAL WELCOME SCREEN -->
-
-<div class="screen" id="welcome">
-  <div class="inner">
-    <div class="eyebrow">A little universe made for us</div>
-    <h1>For my<br><em>favourite person.</em></h1>
-    <p class="lead">
-      Some stories are too special to be told to just anyone.
-      So I made a little place that belongs only to us.
-    </p>
-    <button class="cta" onclick="showGate()">Enter our little world</button>
-  </div>
-</div>
-
-<!-- ORIGINAL NUMERIC PASSWORD SCREEN -->
-
-<div class="screen hidden" id="gate">
-  <div class="inner">
-    <div class="eyebrow">A little something to remember</div>
-    <h1>Before you<br><em>come in...</em></h1>
-    <p>Think of the date it all began for us.</p>
-
-    <div class="display" id="display">••••••••</div>
-
-    <div class="keypad">
-      <button class="key" onclick="press('1')">1</button>
-      <button class="key" onclick="press('2')">2</button>
-      <button class="key" onclick="press('3')">3</button>
-      <button class="key" onclick="press('4')">4</button>
-      <button class="key" onclick="press('5')">5</button>
-      <button class="key" onclick="press('6')">6</button>
-      <button class="key" onclick="press('7')">7</button>
-      <button class="key" onclick="press('8')">8</button>
-      <button class="key" onclick="press('9')">9</button>
-      <button class="key" onclick="clearPin()">⌫</button>
-      <button class="key" onclick="press('0')">0</button>
-      <button class="key" onclick="checkPin()">♥</button>
+<div class="screen" id="gate">
+  <div class="panel">
+    <div class="eyebrow">A little something for you</div>
+    <h1>For my <span class="gold">favourite</span> person.</h1>
+    <div class="divider"></div>
+    <p>Some stories are too special to be told to just anyone.<br>
+    This one is ours.</p>
+    <p class="small">A little journey through us, made with love.</p>
+    <button class="btn" onclick="showPassword()">ENTER OUR STORY</button>
+    <div id="passwordArea" class="hidden">
+      <p class="gold">Think of the date it all started for us.</p>
+      <input id="pin" type="password" inputmode="numeric"
+        maxlength="8" placeholder="DDMMYYYY" aria-label="Our special date">
+      <br>
+      <button class="btn" onclick="unlock()">UNLOCK MY HEART</button>
+      <p id="message"></p>
     </div>
-
-    <div class="error" id="error"></div>
   </div>
 </div>
 
-<!-- MAIN ANNIVERSARY WEBSITE -->
-
-<div id="experience" class="hidden">
-
+<div id="main">
 <nav>
-  <div class="brand">OUR LITTLE UNIVERSE · 01</div>
-  <div>
-    <a href="#story">OUR STORY</a>
-    <a href="#letter">LETTER</a>
-    <a href="#memories">MEMORIES</a>
-    <a href="#littlethings">LITTLE THINGS</a>
-  </div>
+  <a href="#beginning">OUR BEGINNING</a>
+  <a href="#journey">OUR JOURNEY</a>
+  <a href="#letter">MY LETTER</a>
+  <a href="#memories">MEMORIES</a>
 </nav>
 
-<header class="screen" style="min-height:80svh">
-  <div>
-    <div class="eyebrow">05 · 11 · 2026</div>
-    <h1>Happy first<br><em>anniversary,</em><br>Baby Bear.</h1>
-    <p class="lead">365 days. A thousand little moments. And a story that is ours.</p>
-    <div class="eyebrow">BUNNY BEAR ♥ BABY BEAR</div>
-  </div>
+<header class="hero">
+  <div class="eyebrow">November 5, 2026</div>
+  <h1>Happy first<br><span class="gold">wedding anniversary.</span></h1>
+  <p>To my Bunny bear, my baby bear, my favourite trouble.</p>
+  <div class="divider"></div>
+  <p class="date">05 · 11 · 2026</p>
+  <a href="#beginning" class="btn">TAKE A LITTLE JOURNEY WITH ME</a>
 </header>
 
-<section>
-  <div class="head">
-    <div class="eyebrow">Chapter one · 365 days</div>
-    <h2>And then there was us.</h2>
-  </div>
-  <p class="intro">
-    Out of all the people and all the possibilities, somehow I found you.
-    What began with a swipe became a story across countries, a birthday
-    visit I will always remember, and a year of learning what it means
-    to choose each other.
+<section id="beginning">
+  <div class="eyebrow">It started somewhere</div>
+  <h2>And somehow, it became <span class="gold">us.</span></h2>
+  <p>
+    Before the wedding, before all the memories, before we knew
+    what life had planned for us, there was one message.
+  </p>
+  <div class="divider"></div>
+  <p class="date">JANUARY 16, 2023</p>
+  <p>The day our conversations began.</p>
+  <p>
+    I saw you, you caught my attention, and I decided to take a chance.
+    From a dating app to Instagram, from messages across countries
+    to building a life together — look at us now.
   </p>
 </section>
 
-<!-- OUR STORY -->
-
-<section id="story">
-  <div class="head">
-    <div class="eyebrow">The beginning of us</div>
-    <h2>Our story, in little chapters</h2>
-  </div>
-
+<section id="journey">
+  <div class="eyebrow">Our little timeline</div>
+  <h2>From a message to <span class="gold">a marriage.</span></h2>
   <div class="timeline">
-
-    <article class="moment">
-      <small>CHAPTER 01 · THE FIRST SPARK</small>
-      <h3>The dating app</h3>
-      <p>
-        I saw you on a dating app. You caught my attention enough that
-        I deactivated it. Something about you made me want to find out
-        who you were.
-      </p>
-    </article>
-
-    <article class="moment">
-      <small>CHAPTER 02 · INSTAGRAM ERA</small>
-      <h3>A little persistence</h3>
-      <p>
-        Then came Instagram: the follow, the likes, and finally the
-        message. You were in the USA; I was in the UK. Distance was
-        part of the beginning, not the ending.
-      </p>
-    </article>
-
-    <article class="moment">
-      <small>CHAPTER 03 · A BIRTHDAY TO REMEMBER</small>
-      <h3>New Orleans to me</h3>
-      <p>
-        You travelled all the way from New Orleans to come see me
-        on my birthday in 2024. That kind of effort becomes a memory
-        you carry with you.
-      </p>
-    </article>
-
-    <article class="moment">
-      <small>CHAPTER 04 · OUR CHAPTER</small>
-      <h3>Here we are</h3>
-      <p>
-        Different moments, different lessons, laughter, affection,
-        hard days and beautiful ones. One year into a story that
-        is still being written.
-      </p>
-    </article>
-
+    <div class="event">
+      <h3>January 16, 2023</h3>
+      <p>Our first conversation. A little message that became the beginning of a much bigger story.</p>
+    </div>
+    <div class="event">
+      <h3>Across the miles</h3>
+      <p>The UK and the USA. Different places, different time zones, but somehow we kept finding our way into each other's days.</p>
+    </div>
+    <div class="event">
+      <h3>Birthday memories · 2024</h3>
+      <p>You travelled from New Orleans to spend my birthday with me. A memory I will always hold close.</p>
+    </div>
+    <div class="event">
+      <h3>November 5, 2025</h3>
+      <p>The day we became husband and wife. The beginning of a new chapter in our story.</p>
+    </div>
+    <div class="event">
+      <h3>November 5, 2026</h3>
+      <p>One year married. Still learning, still growing, still writing our story.</p>
+    </div>
   </div>
 </section>
 
-<!-- ORIGINAL ENVELOPE AND ANNIVERSARY LETTER -->
-
 <section id="letter">
-  <div class="head">
-    <div class="eyebrow">A letter from my heart</div>
-    <h2>For you, my favourite notification.</h2>
-    <p>Take your time with this one.</p>
-  </div>
-
-  <button class="envelope" onclick="openLetter()"
-          aria-label="Open anniversary letter">
-    <span class="seal">♥</span>
-  </button>
-
-  <div style="text-align:center">
-    <button class="cta" onclick="openLetter()">Unseal your letter</button>
-  </div>
-
-  <article class="letter" id="letterCard">
-<h3>My love,</h3>
-It's been kind of a rough year for us two, but somehow, we managed to scale through the hard times, even those moments when we didn't know what we felt towards each other or where we stood. There were days we understood each other, and days we couldn't seem to get it right. We've had our differences, our moments of anger, misunderstandings, and times when loving each other wasn't as easy as it should have been, but through it all, we kept finding our way back to each other.
+  <div class="eyebrow">Something from my heart</div>
+  <h2>A letter for <span class="gold">you.</span></h2>
+  <p>Not just words. A little piece of me, written for you.</p>
+  <div class="letter-wrap">
+    <div class="envelope" onclick="openLetter()">
+      <div style="font-size:42px">✉</div>
+      <h3>To my favourite notification</h3>
+      <p>Tap to open your letter</p>
+      <span class="gold">WITH LOVE ♥</span>
+    </div>
+    <article class="letter" id="letterText">It's been kind of a rough year for us two, but somehow, we managed to scale through the hard times, even those moments when we didn't know what we felt towards each other or where we stood. There were days we understood each other, and days we couldn't seem to get it right. We've had our differences, our moments of anger, misunderstandings, and times when loving each other wasn't as easy as it should have been, but through it all, we kept finding our way back to each other.
 
 It's been 365 days of a rollercoaster of love, laughter, anger, and unforgettable memories with you. And though I don't know exactly where this is going, I know this year has been one of learning, not just about you, but about myself, about us, and about what it means to love someone who sees the world differently from you.
 
@@ -538,228 +221,96 @@ I don't know what the future holds for us, but I know I'm grateful we got to exp
 
 Here's to the memories we've made, the things we've learned about each other, and the moments that made this year ours. Here's to being my boyfriend, to the love we've shared, and to the fact that, in spite of everything, you remain someone so special to me.
 
-Happy anniversary, babe. ❤️
-  </article>
+Happy anniversary, babe. ❤️</article>
+  </div>
 </section>
-
-<!-- FOUR PERMANENT PHOTOGRAPHS -->
 
 <section id="memories">
-  <div class="head">
-    <div class="eyebrow">Little pieces of us</div>
-    <h2>Our memory gallery</h2>
-    <p>A few moments I want to keep close forever.</p>
+  <div class="eyebrow">Little pieces of forever</div>
+  <h2>Our <span class="gold">memories.</span></h2>
+  <p>These spaces are waiting for the photographs that tell our story.</p>
+  <div class="grid">
+    <div class="memory">
+      <div class="eyebrow">Memory one</div>
+      <p>Where it all began</p>
+      <input type="file" accept="image/*" onchange="preview(this,'photo1')">
+      <img id="photo1" class="hidden" alt="Our first memory">
+    </div>
+    <div class="memory">
+      <div class="eyebrow">Memory two</div>
+      <p>Moments worth keeping</p>
+      <input type="file" accept="image/*" onchange="preview(this,'photo2')">
+      <img id="photo2" class="hidden" alt="A favourite memory">
+    </div>
+    <div class="memory">
+      <div class="eyebrow">Memory three</div>
+      <p>My favourite version of us</p>
+      <input type="file" accept="image/*" onchange="preview(this,'photo3')">
+      <img id="photo3" class="hidden" alt="Another favourite memory">
+    </div>
   </div>
-
-  <div class="gallery">
-
-    <div>
-      <div class="photo">
-        <img src="Tezza-2951.JPG" alt="Our first memory"
-             onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
-        <div class="photo-error">Photo not found.<br>Check the filename in GitHub.</div>
-      </div>
-      <div class="photo-caption">OUR FIRST CHAPTER ♥</div>
-    </div>
-
-    <div>
-      <div class="photo">
-        <img src="Tezza-2320.JPG" alt="A favourite memory"
-             onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
-        <div class="photo-error">Photo not found.<br>Check the filename in GitHub.</div>
-      </div>
-      <div class="photo-caption">THE MOMENTS THAT MATTER</div>
-    </div>
-
-    <div>
-      <div class="photo">
-        <img src="Tezza-5458.JPG" alt="A beautiful moment together"
-             onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
-        <div class="photo-error">Photo not found.<br>Check the filename in GitHub.</div>
-      </div>
-      <div class="photo-caption">A FAVOURITE DAY</div>
-    </div>
-
-    <div>
-      <div class="photo">
-        <img src="ImG_2505.jpg" alt="Another special memory"
-             onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
-        <div class="photo-error">Photo not found.<br>Check the filename in GitHub.</div>
-      </div>
-      <div class="photo-caption">A MOMENT THAT FEELS LIKE US</div>
-    </div>
-
-  </div>
+  <p class="small">Photo previews are temporary. Add the actual images to the website files before publishing.</p>
 </section>
-
-<!-- SIX PERSONAL NICKNAME CARDS -->
-
-<section id="littlethings">
-  <div class="head">
-    <div class="eyebrow">A few little truths</div>
-    <h2>Reasons, reminders & little things</h2>
-    <p>Tap each card for a little reminder.</p>
-  </div>
-
-  <div class="reasons">
-
-    <button class="reason" onclick="reveal(this,'Because you became my favourite notification, the one I find myself hoping to see.')">
-      <span>01 · FAVOURITE NOTIFICATION</span>
-      Tap to reveal ♥
-    </button>
-
-    <button class="reason" onclick="reveal(this,'Because there is only one you, and I love the details that make you exactly who you are.')">
-      <span>02 · BUNNY BEAR</span>
-      Tap to reveal ♥
-    </button>
-
-    <button class="reason" onclick="reveal(this,'Because you will always have a special place in my heart, my Baby Bear.')">
-      <span>03 · BABY BEAR</span>
-      Tap to reveal ♥
-    </button>
-
-    <button class="reason" onclick="reveal(this,'Because your presence, your personality and everything that makes you you are worth celebrating.')">
-      <span>04 · MHIZ LEO</span>
-      Tap to reveal ♥
-    </button>
-
-    <button class="reason" onclick="reveal(this,'Because you bring sweetness into my life in ways you may not even realise.')">
-      <span>05 · CUP CAKE</span>
-      Tap to reveal ♥
-    </button>
-
-    <button class="reason" onclick="reveal(this,'Because even when you drive me a little crazy, you are still my favourite trouble.')">
-      <span>06 · FAVOURITE TROUBLE</span>
-      Tap to reveal ♥
-    </button>
-
-  </div>
-</section>
-
-<!-- OUR SOUNDTRACK -->
 
 <section>
-  <div class="head">
-    <div class="eyebrow">Our soundtrack</div>
-    <h2>Godspeed.</h2>
-    <p>Frank Ocean · A song for this little world of ours.</p>
-  </div>
-
-  <div class="music">
-    <div style="font-size:32px;color:var(--gold)">♫</div>
-    <p>A little soundtrack for our story.</p>
-
-    <audio id="player" src="godspeed.mp3" controls loop preload="none">
-      Your browser does not support audio playback.
-    </audio>
-
-    <p style="font-size:10px">
-      Press play to listen to our song.
-    </p>
+  <div class="eyebrow">A few things I adore</div>
+  <h2>My favourite <span class="gold">you.</span></h2>
+  <div class="grid">
+    <div class="reason">My Bunny bear 🧸</div>
+    <div class="reason">My baby bear ❤️</div>
+    <div class="reason">My Mhiz Leo ✨</div>
+    <div class="reason">My cup cake 🍰</div>
+    <div class="reason">My favourite trouble</div>
+    <div class="reason">My favourite notification</div>
   </div>
 </section>
 
-<!-- FINAL MESSAGE -->
+<section>
+  <div class="eyebrow">One more thing</div>
+  <h2>Whatever tomorrow brings,</h2>
+  <h1 class="gold">I'm glad it's you.</h1>
+  <p>Here's to more laughter, more memories, more learning, and more life together.</p>
+  <div class="divider"></div>
+  <p class="date">HAPPY FIRST WEDDING ANNIVERSARY</p>
+  <p>November 5, 2026</p>
+  <h2>Forever yours. ❤️</h2>
+</section>
 
-<div class="final">
-  <div class="eyebrow">To be continued · Chapter two</div>
-  <h2>Still my favourite<br><em>story.</em></h2>
-  <p>
-    To my Bunny Bear, my Baby Bear, my Mhiz Leo, my Cup Cake,
-    my Favourite Trouble, my Favourite Notification — thank you
-    for being part of this chapter. Whatever the next pages hold,
-    this first year will always be ours.
-  </p>
-  <div class="eyebrow">05 · 11 · 2026 ♥</div>
-</div>
-
-<footer>MADE WITH LOVE · JUST FOR US</footer>
-
+<footer>
+  Made with love, for my favourite person.<br>
+  <span class="gold">05 · 11 · 2026</span>
+</footer>
 </div>
 
 <script>
-/* PASSWORD SCREEN */
-
-let pin = '';
-const ACCESS_PIN = '05112025';
-
-function showGate() {
-  document.getElementById('welcome').classList.add('hidden');
-  document.getElementById('gate').classList.remove('hidden');
+function showPassword(){
+  document.getElementById('passwordArea').classList.remove('hidden');
+  document.getElementById('pin').focus();
 }
-
-function draw() {
-  document.getElementById('display').textContent =
-    pin.padEnd(8, '•');
-}
-
-function press(number) {
-  if (pin.length < 8) {
-    pin += number;
-    draw();
-    if (pin.length === 8) {
-      setTimeout(checkPin, 180);
-    }
+function unlock(){
+  const pin=document.getElementById('pin').value;
+  if(pin==='05112025'){
+    document.getElementById('gate').style.display='none';
+    document.getElementById('main').style.display='block';
+    window.scrollTo(0,0);
+  }else{
+    document.getElementById('message').textContent=
+      'Not quite, my love. Try the date that changed everything. ❤️';
   }
 }
-
-function clearPin() {
-  pin = pin.slice(0, -1);
-  draw();
-  document.getElementById('error').textContent = '';
+document.getElementById('pin').addEventListener('keydown',e=>{
+  if(e.key==='Enter')unlock();
+});
+function openLetter(){
+  document.getElementById('letterText').classList.toggle('open');
 }
-
-function checkPin() {
-  if (pin === ACCESS_PIN) {
-    document.getElementById('gate').classList.add('hidden');
-    document.getElementById('experience').classList.remove('hidden');
-    window.scrollTo(0, 0);
-    startRomanticAnimations();
-  } else {
-    document.getElementById('error').textContent =
-      'Not quite, my love. Try that special date again.';
-    pin = '';
-    draw();
+function preview(input,id){
+  if(input.files && input.files[0]){
+    const img=document.getElementById(id);
+    img.src=URL.createObjectURL(input.files[0]);
+    img.classList.remove('hidden');
   }
-}
-
-/* ENVELOPE LETTER */
-
-function openLetter() {
-  const letter = document.getElementById('letterCard');
-  letter.classList.add('show');
-  letter.scrollIntoView({behavior:'smooth', block:'center'});
-}
-
-/* INTERACTIVE REVEAL CARDS */
-
-function reveal(element, message) {
-  element.classList.add('revealed');
-  element.innerHTML =
-    '<span>JUST A LITTLE REMINDER</span>' + message;
-}
-
-/* ROMANTIC ROSE PETALS AND HEARTS */
-
-function startRomanticAnimations() {
-  const symbols = ['🌹','♥','♡','💕','✧'];
-
-  setInterval(() => {
-    const petal = document.createElement('div');
-    petal.className = 'petal';
-    petal.textContent =
-      symbols[Math.floor(Math.random() * symbols.length)];
-
-    petal.style.left = Math.random() * 100 + 'vw';
-    petal.style.fontSize = (13 + Math.random() * 15) + 'px';
-    petal.style.animationDuration = (8 + Math.random() * 7) + 's';
-
-    document.body.appendChild(petal);
-
-    setTimeout(() => petal.remove(), 16000);
-  }, 1300);
 }
 </script>
-
 </body>
 </html>
