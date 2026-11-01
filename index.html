@@ -4,1089 +4,772 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#35101e">
-<title>Our Forever | Happy Anniversary</title>
+<title>Our First Anniversary ❤️</title>
 
 <style>
 :root {
-  --wine:#451522;
-  --deep:#230b14;
-  --rose:#a94e66;
-  --cream:#fff8ef;
-  --gold:#d8b77b;
-  --muted:#d7c3bd;
+  --wine: #451522;
+  --deep: #230b14;
+  --rose: #a94e66;
+  --cream: #fff8ef;
+  --gold: #d8b77b;
+  --muted: #d7c3bd;
 }
 
-* { box-sizing:border-box; }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-html { scroll-behavior:smooth; }
+html { scroll-behavior: smooth; }
 
 body {
-  margin:0;
-  background:var(--deep);
-  color:var(--cream);
-  font-family:Georgia,'Times New Roman',serif;
-  overflow-x:hidden;
+  background: var(--deep);
+  color: var(--cream);
+  font-family: Georgia, 'Times New Roman', serif;
+  line-height: 1.7;
+  overflow-x: hidden;
 }
 
-button,input { font:inherit; }
-button { cursor:pointer; }
+button { font: inherit; }
 
-.screen {
-  min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  padding:25px 18px;
-  position:relative;
-  overflow:hidden;
+.hidden { display: none !important; }
+
+/* PASSWORD SCREEN */
+
+#gate {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 25px;
+  text-align: center;
+  background:
+    radial-gradient(circle at top, #713047, transparent 65%),
+    var(--deep);
 }
 
-.panel {
-  width:min(100%,680px);
-  padding:48px 25px;
-  text-align:center;
-  border:1px solid #d8b77b88;
-  background:linear-gradient(145deg,#592333,#2c0d19);
-  box-shadow:0 20px 80px #0007;
-  position:relative;
-  z-index:2;
+.gate-card {
+  width: 100%;
+  max-width: 440px;
+  padding: 42px 28px;
+  border: 1px solid var(--gold);
+  border-radius: 22px;
+  background: rgba(35, 11, 20, .8);
+  box-shadow: 0 15px 60px #0006;
+}
+
+.gate-rose {
+  font-size: 55px;
+  margin-bottom: 15px;
+}
+
+.gate-card h1 {
+  color: var(--gold);
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+
+.gate-card p {
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+
+#password {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid var(--gold);
+  border-radius: 10px;
+  background: #fff8ef;
+  color: var(--deep);
+  font-size: 19px;
+  text-align: center;
+  letter-spacing: 5px;
+  margin-bottom: 15px;
+}
+
+.gold-button {
+  display: inline-block;
+  border: none;
+  border-radius: 30px;
+  padding: 13px 27px;
+  background: var(--gold);
+  color: var(--deep);
+  font-weight: bold;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.gold-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 20px #d8b77b55;
+}
+
+#passwordMessage {
+  color: #ffc0cb;
+  margin-top: 12px;
+  min-height: 25px;
+}
+
+/* MAIN WEBSITE */
+
+header {
+  text-align: center;
+  padding: 75px 20px 65px;
+  background:
+    linear-gradient(#230b14aa, #230b14ee),
+    radial-gradient(circle at center, #8b344d, #230b14);
+  border-bottom: 1px solid #d8b77b55;
 }
 
 .eyebrow {
-  color:var(--gold);
-  font-size:11px;
-  letter-spacing:4px;
-  text-transform:uppercase;
+  color: var(--gold);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  font-size: 12px;
 }
 
-h1 {
-  font-size:clamp(42px,9vw,78px);
-  font-weight:normal;
-  margin:22px 0;
-  line-height:1.12;
+header h1 {
+  font-size: clamp(38px, 8vw, 65px);
+  color: var(--cream);
+  line-height: 1.2;
+  margin: 20px 0;
 }
 
-h2 {
-  font-size:clamp(30px,6vw,48px);
-  font-weight:normal;
+header .subtitle {
+  color: var(--muted);
+  font-size: 17px;
 }
 
-p { line-height:1.9; }
-
-.gold { color:var(--gold); }
-
-.small {
-  font-size:12px;
-  color:var(--muted);
+.header-date {
+  margin-top: 20px;
+  color: var(--gold);
 }
-
-.divider {
-  width:65px;
-  height:1px;
-  background:var(--gold);
-  margin:28px auto;
-}
-
-.btn {
-  border:0;
-  background:var(--gold);
-  color:var(--deep);
-  padding:14px 25px;
-  letter-spacing:1px;
-  transition:.3s;
-}
-
-.btn:hover {
-  transform:translateY(-3px);
-  background:#f0d6a2;
-}
-
-.hidden { display:none!important; }
-
-/* ROSE DECORATIONS */
-
-.rose-decoration {
-  position:absolute;
-  font-size:clamp(35px,7vw,75px);
-  opacity:.6;
-  filter:drop-shadow(0 4px 12px #0007);
-  pointer-events:none;
-}
-
-.rose-one { top:25px;left:20px; }
-.rose-two { bottom:25px;right:20px; }
-.rose-three { top:30px;right:25px;font-size:35px; }
-
-/* FLOATING HEARTS AND PETALS */
-
-.floating {
-  position:fixed;
-  bottom:-50px;
-  pointer-events:none;
-  z-index:10;
-  animation:floatUp linear forwards;
-  opacity:0;
-}
-
-@keyframes floatUp {
-  0% { transform:translateY(0) rotate(0);opacity:0; }
-  15% { opacity:.8; }
-  85% { opacity:.7; }
-  100% { transform:translateY(-115vh) rotate(35deg);opacity:0; }
-}
-
-.sparkle {
-  position:absolute;
-  color:var(--gold);
-  animation:twinkle 2.5s infinite alternate;
-  pointer-events:none;
-}
-
-@keyframes twinkle {
-  from { opacity:.15;transform:scale(.7); }
-  to { opacity:1;transform:scale(1.3); }
-}
-
-@keyframes fadeIn {
-  from { opacity:0;transform:translateY(18px); }
-  to { opacity:1;transform:translateY(0); }
-}
-
-/* NAVIGATION */
-
-#main { display:none; }
 
 nav {
-  position:sticky;
-  top:0;
-  z-index:20;
-  background:#230b14ed;
-  border-bottom:1px solid #d8b77b55;
-  padding:15px 10px;
-  display:flex;
-  justify-content:center;
-  gap:20px;
-  flex-wrap:wrap;
-  backdrop-filter:blur(12px);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  padding: 18px 10px;
+  background: #35101d;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 nav a {
-  color:var(--cream);
-  font-size:11px;
-  letter-spacing:1px;
-  text-decoration:none;
+  text-decoration: none;
+  color: var(--cream);
+  font-size: 13px;
+  padding: 5px 9px;
 }
 
-nav a:hover { color:var(--gold); }
-
-/* HERO */
-
-.hero {
-  min-height:90vh;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  padding:45px 20px;
-  background:
-    radial-gradient(ellipse at center,#713044 0%,#451522 48%,#230b14 100%);
-  position:relative;
-  overflow:hidden;
-}
-
-.hero h1 { max-width:800px; }
-
-.hero-rose {
-  font-size:clamp(35px,8vw,75px);
-  margin:15px;
-  animation:sway 4s ease-in-out infinite;
-}
-
-@keyframes sway {
-  0%,100% { transform:rotate(-5deg); }
-  50% { transform:rotate(5deg); }
-}
-
-.date {
-  color:var(--gold);
-  letter-spacing:4px;
-}
-
-/* SECTIONS */
+nav a:hover { color: var(--gold); }
 
 section {
-  max-width:950px;
-  margin:auto;
-  padding:85px 22px;
-  text-align:center;
+  max-width: 1050px;
+  margin: auto;
+  padding: 75px 22px;
 }
 
-.story-text {
-  max-width:680px;
-  margin:auto;
+.section-title {
+  text-align: center;
+  color: var(--gold);
+  font-size: 32px;
+  margin-bottom: 15px;
 }
+
+.section-intro {
+  text-align: center;
+  color: var(--muted);
+  max-width: 650px;
+  margin: 0 auto 35px;
+}
+
+.divider {
+  width: 70px;
+  height: 2px;
+  background: var(--gold);
+  margin: 18px auto 30px;
+}
+
+/* OUR STORY */
 
 .timeline {
-  max-width:620px;
-  margin:40px auto;
-  text-align:left;
+  max-width: 700px;
+  margin: auto;
+  border-left: 2px solid var(--gold);
+  padding-left: 27px;
 }
 
-.event {
-  border-left:1px solid var(--gold);
-  padding:5px 0 30px 25px;
-  position:relative;
+.timeline-item {
+  position: relative;
+  margin-bottom: 35px;
 }
 
-.event:before {
-  content:"";
-  position:absolute;
-  left:-5px;
-  top:8px;
-  width:9px;
-  height:9px;
-  border-radius:50%;
-  background:var(--gold);
-  box-shadow:0 0 12px var(--gold);
+.timeline-item::before {
+  content: "♥";
+  position: absolute;
+  left: -38px;
+  color: var(--rose);
+  background: var(--deep);
 }
 
-.event h3 {
-  color:var(--gold);
-  font-weight:normal;
+.timeline-item h3 {
+  color: var(--gold);
+  margin-bottom: 7px;
 }
+
+.timeline-item p { color: var(--muted); }
 
 /* LETTER */
 
-.letter-wrap {
-  max-width:680px;
-  margin:35px auto;
+.letter-card {
+  max-width: 780px;
+  margin: auto;
+  padding: 38px;
+  background: var(--cream);
+  color: #43202a;
+  border-radius: 14px;
+  box-shadow: 0 12px 35px #0005;
 }
 
-.envelope {
-  background:var(--cream);
-  color:var(--wine);
-  padding:35px 20px;
-  border:2px solid var(--gold);
-  cursor:pointer;
-  transition:.4s;
-  box-shadow:0 12px 35px #0005;
+.letter-card h3 {
+  text-align: center;
+  color: var(--wine);
+  font-size: 27px;
+  margin-bottom: 25px;
 }
 
-.envelope:hover {
-  transform:translateY(-6px);
+.letter-card p {
+  margin-bottom: 19px;
+  line-height: 1.9;
 }
 
-.envelope-icon {
-  font-size:55px;
-}
-
-.letter {
-  display:none;
-  text-align:left;
-  background:#fff8ef;
-  color:#49202b;
-  padding:30px 25px;
-  margin-top:15px;
-  line-height:1.95;
-  white-space:pre-line;
-  animation:fadeIn .8s;
-  border:1px solid var(--gold);
-}
-
-.letter.open { display:block; }
-
-/* INTERACTIVE FLIP CARDS */
-
-.flip-grid {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
-  gap:18px;
-  max-width:800px;
-  margin:35px auto;
-}
-
-.flip-card {
-  height:185px;
-  perspective:1000px;
-  cursor:pointer;
-  outline:none;
-}
-
-.flip-inner {
-  position:relative;
-  width:100%;
-  height:100%;
-  transition:transform .75s;
-  transform-style:preserve-3d;
-}
-
-.flip-card.flipped .flip-inner {
-  transform:rotateY(180deg);
-}
-
-.flip-front,.flip-back {
-  position:absolute;
-  inset:0;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  padding:20px;
-  border:1px solid var(--gold);
-  backface-visibility:hidden;
-  -webkit-backface-visibility:hidden;
-  background:linear-gradient(145deg,#713044,#35101e);
-}
-
-.flip-front {
-  box-shadow:0 8px 25px #0004;
-}
-
-.flip-back {
-  transform:rotateY(180deg);
-  background:linear-gradient(145deg,#fff8ef,#f0dfc9);
-  color:var(--wine);
-}
-
-.flip-front .symbol {
-  font-size:35px;
-  margin-bottom:12px;
-}
-
-.flip-front h3,.flip-back h3 {
-  font-weight:normal;
-  margin:5px;
-  font-size:19px;
-}
-
-.flip-back p {
-  font-size:14px;
-  line-height:1.7;
-}
-
-.tap-hint {
-  font-size:10px;
-  color:var(--gold);
-  letter-spacing:2px;
-  margin-top:10px;
-}
-
-/* PHOTO GALLERY */
+/* MEMORIES - FOUR PHOTOS ONLY */
 
 .photo-grid {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
-  gap:18px;
-  margin-top:35px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
 }
 
 .photo-card {
-  border:1px solid #d8b77b88;
-  padding:12px;
-  background:#ffffff08;
+  background: #35101d;
+  border: 1px solid #d8b77b66;
+  border-radius: 15px;
+  overflow: hidden;
+  padding-bottom: 15px;
+  text-align: center;
 }
 
 .photo-frame {
-  min-height:230px;
-  background:linear-gradient(145deg,#713044,#35101e);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  overflow:hidden;
-  position:relative;
+  width: 100%;
+  height: 300px;
+  background: #4a2531;
+  overflow: hidden;
 }
 
 .photo-frame img {
-  width:100%;
-  height:260px;
-  object-fit:cover;
-  display:none;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .5s;
 }
 
-.photo-frame .placeholder {
-  padding:20px;
-  color:var(--muted);
+.photo-card:hover img {
+  transform: scale(1.04);
 }
 
-.photo-card label {
-  display:block;
-  color:var(--gold);
-  font-size:13px;
-  margin:14px 0 8px;
+.photo-card p {
+  color: var(--gold);
+  padding: 14px 8px 0;
 }
 
-.photo-card input {
-  max-width:100%;
-  font-size:11px;
+/* NICKNAME CARDS */
+
+.nickname-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 17px;
 }
 
-/* MUSIC PLAYER */
-
-.music-player {
-  position:fixed;
-  bottom:20px;
-  right:18px;
-  z-index:30;
-  background:#451522ed;
-  border:1px solid var(--gold);
-  padding:12px 15px;
-  box-shadow:0 5px 20px #0006;
-  display:flex;
-  align-items:center;
-  gap:12px;
-  border-radius:30px;
+.flip-card {
+  height: 175px;
+  perspective: 1000px;
+  cursor: pointer;
 }
 
-.music-player button {
-  background:transparent;
-  color:var(--gold);
-  border:0;
-  font-size:20px;
+.flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform .7s;
+  transform-style: preserve-3d;
 }
 
-.music-player span {
-  font-size:11px;
-  color:var(--cream);
+.flip-card.flipped .flip-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-front, .flip-back {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 17px;
+  border: 1px solid var(--gold);
+  border-radius: 14px;
+  backface-visibility: hidden;
+}
+
+.flip-front {
+  background: #481a2b;
+  color: var(--gold);
+  font-size: 20px;
+}
+
+.flip-back {
+  background: var(--cream);
+  color: var(--wine);
+  transform: rotateY(180deg);
+  font-size: 14px;
+}
+
+/* MUSIC */
+
+.music-card {
+  max-width: 580px;
+  margin: auto;
+  text-align: center;
+  padding: 35px 20px;
+  background: #35101d;
+  border: 1px solid var(--gold);
+  border-radius: 18px;
+}
+
+.music-card .music-icon {
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+
+.music-card h3 {
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+
+.music-card p {
+  color: var(--muted);
+  margin-bottom: 20px;
 }
 
 /* ENDING */
 
-.final-message {
-  background:radial-gradient(ellipse at center,#713044,#230b14 75%);
-  padding:90px 20px;
+.ending {
+  text-align: center;
+  padding: 90px 22px;
+  background: linear-gradient(#230b14, #541b31);
+}
+
+.ending h2 {
+  color: var(--gold);
+  font-size: 35px;
+  margin-bottom: 18px;
+}
+
+.ending p {
+  color: var(--muted);
+  max-width: 600px;
+  margin: auto;
 }
 
 footer {
-  padding:45px 20px;
-  text-align:center;
-  color:var(--muted);
-  font-size:13px;
+  padding: 25px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+  background: var(--deep);
 }
 
-@media(max-width:550px) {
-  section { padding:65px 18px; }
-  nav { gap:12px; }
-  nav a { font-size:9px; }
-  .panel { padding:38px 18px; }
-  .flip-card { height:175px; }
-  .music-player { bottom:12px;right:10px; }
+/* FLOATING HEARTS AND PETALS */
+
+.floating {
+  position: fixed;
+  bottom: -35px;
+  z-index: 20;
+  pointer-events: none;
+  animation: floatUp linear forwards;
+}
+
+@keyframes floatUp {
+  to {
+    transform: translateY(-110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@media(max-width: 650px) {
+  .photo-grid { grid-template-columns: 1fr; }
+  .photo-frame { height: 340px; }
+  .nickname-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .letter-card { padding: 25px 20px; }
+  nav { gap: 5px; }
+  nav a { font-size: 12px; }
+}
+
+@media(max-width: 380px) {
+  .nickname-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
 
 <body>
 
-<!-- WELCOME SCREEN -->
+<!-- PASSWORD GATE -->
 
-<div class="screen" id="gate">
+<div id="gate">
+  <div class="gate-card">
+    <div class="gate-rose">🌹</div>
+    <h1>Just for you, my love</h1>
+    <p>A little place filled with our memories.<br>Enter our special date to open it.</p>
 
-  <div class="rose-decoration rose-one">🌹</div>
-  <div class="rose-decoration rose-two">🌹</div>
-  <div class="rose-decoration rose-three">✨</div>
+    <input id="password" type="password"
+           inputmode="numeric" maxlength="8"
+           placeholder="Our special date">
 
-  <div class="panel">
-    <div class="eyebrow">A little something for you</div>
-
-    <div class="hero-rose">🌹</div>
-
-    <h1>For my <span class="gold">favourite</span> person.</h1>
-
-    <div class="divider"></div>
-
-    <p>Some stories are too special to be told to just anyone.</p>
-    <p>This one is ours.</p>
-
-    <p class="small">A little journey through us, made with love.</p>
-
-    <button class="btn" onclick="showPassword()">
-      ENTER OUR STORY
+    <button class="gold-button" onclick="unlock()">
+      Open your surprise ❤️
     </button>
 
-    <div id="passwordArea" class="hidden">
-      <p class="gold">Think of the date it all started for us.</p>
-
-      <input
-        id="pin"
-        type="password"
-        inputmode="numeric"
-        maxlength="8"
-        placeholder="DDMMYYYY"
-        aria-label="Our special date"
-        style="padding:14px;text-align:center;letter-spacing:7px;width:230px"
-      >
-
-      <br>
-
-      <button class="btn" onclick="unlock()">
-        UNLOCK MY HEART
-      </button>
-
-      <p id="message" class="small"></p>
-    </div>
+    <p style="font-size:12px;margin-top:18px;">
+      Hint: Think of the date it all started for us.
+    </p>
+    <div id="passwordMessage"></div>
   </div>
 </div>
 
 <!-- MAIN WEBSITE -->
 
-<div id="main">
+<div id="website" class="hidden">
 
-<nav>
-  <a href="#beginning">OUR BEGINNING</a>
-  <a href="#journey">OUR JOURNEY</a>
-  <a href="#letter">MY LETTER</a>
-  <a href="#memories">MEMORIES</a>
-  <a href="#reasons">WHY YOU</a>
-</nav>
-
-<!-- HERO REVEAL -->
-
-<header class="hero">
-
-  <div class="rose-decoration rose-one">🌹</div>
-  <div class="rose-decoration rose-two">🌹</div>
-
-  <div class="eyebrow">November 5, 2026</div>
-
-  <div class="hero-rose">🌹</div>
-
-  <h1>
-    Happy first<br>
-    <span class="gold">wedding anniversary.</span>
-  </h1>
-
-  <p>To my Bunny bear, my baby bear, my favourite trouble.</p>
-
-  <div class="divider"></div>
-
-  <p class="date">05 · 11 · 2026</p>
-
-  <a href="#beginning" class="btn" style="text-decoration:none">
-    TAKE A LITTLE JOURNEY WITH ME
-  </a>
-
+<header>
+  <div class="eyebrow">A celebration of us</div>
+  <h1>Happy First<br>Wedding Anniversary</h1>
+  <p class="subtitle">To my favourite person, my love, my home.</p>
+  <p class="header-date">November 5, 2026 · One beautiful year married</p>
+  <div style="font-size:30px;margin-top:20px;">🌹 ❤️ 🌹</div>
 </header>
 
-<!-- OUR BEGINNING -->
+<nav>
+  <a href="#story">Our Story</a>
+  <a href="#letter">My Letter</a>
+  <a href="#memories">Memories</a>
+  <a href="#nicknames">Little Things</a>
+  <a href="#song">Our Song</a>
+</nav>
 
-<section id="beginning">
+<!-- OUR STORY -->
 
-  <div class="eyebrow">It started somewhere</div>
-
-  <h2>And somehow, it became <span class="gold">us.</span></h2>
-
-  <div class="story-text">
-    <p>
-      Before the wedding, before all the memories, before we knew
-      what life had planned for us, there was one message.
-    </p>
-
-    <div class="divider"></div>
-
-    <p class="date">JANUARY 16, 2023</p>
-
-    <p>The day our conversations began.</p>
-
-    <p>
-      I saw you, you caught my attention, and I decided to take a chance.
-      From a dating app to Instagram, from messages across countries
-      to building a life together — look at us now.
-    </p>
-
-    <p>
-      What began with a message became a story I never expected
-      to be writing with you.
-    </p>
-  </div>
-</section>
-
-<!-- TIMELINE -->
-
-<section id="journey">
-
-  <div class="eyebrow">Our little timeline</div>
-
-  <h2>From a message to <span class="gold">a marriage.</span></h2>
+<section id="story">
+  <h2 class="section-title">The Story of Us</h2>
+  <div class="divider"></div>
+  <p class="section-intro">
+    Every love story has a beginning. Ours became one of my favourite
+    parts of life.
+  </p>
 
   <div class="timeline">
-
-    <div class="event">
-      <h3>January 16, 2023</h3>
+    <div class="timeline-item">
+      <h3>January 16, 2023 · The Beginning</h3>
       <p>
-        Our first conversation. A little message that became
-        the beginning of a much bigger story.
+        The day our conversation began. I saw you on a dating app,
+        and something about you caught my attention. I deactivated
+        the app, found you on Instagram, admired your pictures,
+        and eventually found the courage to message you.
       </p>
     </div>
 
-    <div class="event">
-      <h3>Across the miles</h3>
+    <div class="timeline-item">
+      <h3>Two Countries, One Connection</h3>
       <p>
-        The UK and the USA. Different places, different time zones,
-        but somehow we kept finding our way into each other's days.
+        I was in the UK and you were in the USA. Distance was part
+        of our story, but somehow we kept finding ways to make
+        each other feel close.
       </p>
     </div>
 
-    <div class="event">
-      <h3>Birthday memories · 2024</h3>
+    <div class="timeline-item">
+      <h3>2024 · A Birthday to Remember</h3>
       <p>
-        You travelled from New Orleans to spend my birthday with me.
-        A memory I will always hold close.
+        You travelled all the way from New Orleans to visit me
+        for my birthday. One of those memories I will always hold close.
       </p>
     </div>
 
-    <div class="event">
-      <h3>November 5, 2025</h3>
+    <div class="timeline-item">
+      <h3>November 5, 2025 · We Said I Do</h3>
       <p>
-        The day we became husband and wife.
-        The beginning of a new chapter in our story.
+        The day we became husband and wife. A new chapter,
+        a new promise, and a new adventure together.
       </p>
     </div>
 
-    <div class="event">
-      <h3>November 5, 2026</h3>
+    <div class="timeline-item">
+      <h3>November 5, 2026 · Our First Anniversary</h3>
       <p>
-        One year married. Still learning, still growing,
-        still writing our story.
+        One year of marriage, countless memories, lessons,
+        laughter, and a love story that is still being written.
       </p>
     </div>
-
   </div>
 </section>
 
 <!-- LETTER -->
 
 <section id="letter">
+  <h2 class="section-title">A Letter From My Heart</h2>
+  <div class="divider"></div>
+  <p class="section-intro">Some things deserve more than an ordinary text.</p>
 
-  <div class="eyebrow">Something from my heart</div>
+  <div class="letter-card">
+    <h3>To My Love ❤️</h3>
 
-  <h2>A letter for <span class="gold">you.</span></h2>
+    <p>It's been kind of a rough year for us two, but somehow, we managed to scale through the hard times, even those moments when we didn't know what we felt towards each other or where we stood. There were days we understood each other, and days we couldn't seem to get it right. We've had our differences, our moments of anger, misunderstandings, and times when loving each other wasn't as easy as it should have been, but through it all, we kept finding our way back to each other.</p>
 
-  <p>Not just words. A little piece of me, written for you.</p>
+    <p>It's been 365 days of a rollercoaster of love, laughter, anger, and unforgettable memories with you. And though I don't know exactly where this is going, I know this year has been one of learning, not just about you, but about myself, about us, and about what it means to love someone who sees the world differently from you.</p>
 
-  <div class="letter-wrap">
+    <p>We've both had our moments, our flaws, and our ways of handling things that haven't always made it easy for us. We've had to learn each other's differences, adjust in certain ways, unlearn some things, and understand that sometimes, loving each other means seeing beyond our individual perspectives. I know there are things about me you haven't always found easy to deal with, just as there are things about you I've had to understand and make room for. But I think that's part of what makes our journey ours. Neither of us has had it all figured out, and we've both had to find ways to navigate this thing between us.</p>
 
-    <div class="envelope" onclick="openLetter()" role="button" tabindex="0"
-         onkeydown="if(event.key==='Enter'||event.key===' ')openLetter()">
+    <p>Looking back, I know there are moments I could have handled better, things I could have said differently, and ways I could have shown up for you better. And I'm sure you have your own moments you look back on, too. I'm sorry for the times my actions or reactions made things harder than they needed to be, and for the discomfort we've both had to experience along the way. Despite everything, I don't want the difficult moments to overshadow the beautiful ones we've shared.</p>
 
-      <div class="envelope-icon">💌</div>
+    <p>I don't know what the future holds for us, but I know I'm grateful we got to experience this year together. Thank you for the laughter, the memories, the affection, the lessons, and even the moments that challenged us to see things differently. Thank you for being someone whose presence I've come to crave and whose place in my life has meant so much to me.</p>
 
-      <h3>To my favourite notification</h3>
+    <p>Here's to the memories we've made, the things we've learned about each other, and the moments that made this year ours. Here's to being my boyfriend, to the love we've shared, and to the fact that, in spite of everything, you remain someone so special to me.</p>
 
-      <p>Tap to open your letter</p>
-
-      <span class="gold">WITH LOVE ♥</span>
-    </div>
-
-    <article class="letter" id="letterText">It's been kind of a rough year for us two, but somehow, we managed to scale through the hard times, even those moments when we didn't know what we felt towards each other or where we stood. There were days we understood each other, and days we couldn't seem to get it right. We've had our differences, our moments of anger, misunderstandings, and times when loving each other wasn't as easy as it should have been, but through it all, we kept finding our way back to each other.
-
-It's been 365 days of a rollercoaster of love, laughter, anger, and unforgettable memories with you. And though I don't know exactly where this is going, I know this year has been one of learning, not just about you, but about myself, about us, and about what it means to love someone who sees the world differently from you.
-
-We've both had our moments, our flaws, and our ways of handling things that haven't always made it easy for us. We've had to learn each other's differences, adjust in certain ways, unlearn some things, and understand that sometimes, loving each other means seeing beyond our individual perspectives. I know there are things about me you haven't always found easy to deal with, just as there are things about you I've had to understand and make room for. But I think that's part of what makes our journey ours. Neither of us has had it all figured out, and we've both had to find ways to navigate this thing between us.
-
-Looking back, I know there are moments I could have handled better, things I could have said differently, and ways I could have shown up for you better. And I'm sure you have your own moments you look back on, too. I'm sorry for the times my actions or reactions made things harder than they needed to be, and for the discomfort we've both had to experience along the way. Despite everything, I don't want the difficult moments to overshadow the beautiful ones we've shared.
-
-I don't know what the future holds for us, but I know I'm grateful we got to experience this year together. Thank you for the laughter, the memories, the affection, the lessons, and even the moments that challenged us to see things differently. Thank you for being someone whose presence I've come to crave and whose place in my life has meant so much to me.
-
-Here's to the memories we've made, the things we've learned about each other, and the moments that made this year ours. Here's to being my wife, to the love we've shared, and to the fact that, in spite of everything, you remain someone so special to me.
-
-Happy anniversary, bunny bear. ❤️</article>
-
+    <p><strong>Happy anniversary, babe. ❤️</strong></p>
   </div>
 </section>
 
-<!-- MEMORIES -->
+<!-- MEMORIES: EXACTLY FOUR PERMANENT PHOTOS -->
 
 <section id="memories">
-
-  <div class="eyebrow">Little pieces of forever</div>
-
-  <h2>Our <span class="gold">memories.</span></h2>
-
-  <p>
-    Every photograph tells a little part of our story.
-    Here's to the moments I never want to forget.
+  <h2 class="section-title">Our Little Gallery</h2>
+  <div class="divider"></div>
+  <p class="section-intro">
+    A few moments, a thousand feelings, and memories I never want to forget.
   </p>
 
- <div class="photo-grid">
+  <div class="photo-grid">
 
     <div class="photo-card">
-        <div class="photo-frame">
-            <img src="Tezza-2951.JPG"
-                 alt="Where it all began"
-                 style="display:block;width:100%;height:100%;object-fit:cover;">
-        </div>
-        <p>🌹 Where it all began</p>
+      <div class="photo-frame">
+        <img src="Tezza-2951.JPG" alt="Our first memory"
+             onerror="this.alt='Photo could not load';this.style.opacity='.25'">
+      </div>
+      <p>🌹 Where it all began</p>
     </div>
 
     <div class="photo-card">
-        <div class="photo-frame">
-            <img src="Tezza-2320.JPG"
-                 alt="A beautiful memory"
-                 style="display:block;width:100%;height:100%;object-fit:cover;">
-        </div>
-        <p>❤️ Moments worth keeping</p>
+      <div class="photo-frame">
+        <img src="Tezza-2320.JPG" alt="A favourite memory"
+             onerror="this.alt='Photo could not load';this.style.opacity='.25'">
+      </div>
+      <p>❤️ Moments worth keeping</p>
     </div>
 
     <div class="photo-card">
-        <div class="photo-frame">
-            <img src="Tezza-5458.JPG"
-                 alt="My favourite version of us"
-                 style="display:block;width:100%;height:100%;object-fit:cover;">
-        </div>
-        <p>✨ My favourite version of us</p>
+      <div class="photo-frame">
+        <img src="Tezza-5458.JPG" alt="A beautiful moment together"
+             onerror="this.alt='Photo could not load';this.style.opacity='.25'">
+      </div>
+      <p>✨ My favourite version of us</p>
     </div>
 
     <div class="photo-card">
-        <div class="photo-frame">
-            <img src="ImG_2505.jpg"
-                 alt="Another beautiful memory"
-                 style="display:block;width:100%;height:100%;object-fit:cover;">
-        </div>
-        <p>💕 Forever my favourite person</p>
+      <div class="photo-frame">
+        <img src="ImG_2505.jpg" alt="Another special memory"
+             onerror="this.alt='Photo could not load';this.style.opacity='.25'">
+      </div>
+      <p>💕 Forever my favourite person</p>
     </div>
-
-</div>
-
- 
-<div class="photo-grid">
-
-    <!-- Picture 1 -->
-    <div class="photo-card">
-        <div class="photo-frame">
-            <img src="Tezza-2951.JPG"
-                 alt="Where it all began"
-                 style="display:block;width:100%;height:100%;object-fit:cover;">
-        </div>
-        <p>🌹 Where it all began</p>
-    </div>
-
-    <!-- Picture 2 -->
-    <div class="photo-card">
-        <div class="photo-frame">
-            <img src="Tezza-2320.JPG"
-                 alt="Moments worth keeping"
-                 style="display:block;width:100%;height:100%;object-fit:cover;">
-        </div>
-        <p>❤️ Moments worth keeping</p>
-    </div>
-
-    <!-- Picture 3 -->
-    <div class="photo-card">
-        <div class="photo-frame">
-            <img src="Tezza-5458.JPG"
-                 alt="My favourite version of us"
-                 style="display:block;width:100%;height:100%;object-fit:cover;">
-        </div>
-        <p>✨ My favourite version of us</p>
-    </div>
-
-    <!-- Picture 4 -->
-    <div class="photo-card">
-        <div class="photo-frame">
-            <img src="ImG_2505.jpg"
-                 alt="Forever my favourite person"
-                 style="display:block;width:100%;height:100%;object-fit:cover;">
-        </div>
-        <p>💕 Forever my favourite person</p>
-    </div>
-
-</div>
 
   </div>
-
-
 </section>
 
-<!-- INTERACTIVE REASONS -->
+<!-- LITTLE THINGS ABOUT YOU -->
 
-<section id="reasons">
+<section id="nicknames">
+  <h2 class="section-title">A Few Little Things About You</h2>
+  <div class="divider"></div>
+  <p class="section-intro">
+    Tap each card. There is a little something behind every name.
+  </p>
 
-  <div class="eyebrow">A few things I adore</div>
+  <div class="nickname-grid">
 
-  <h2>My favourite <span class="gold">you.</span></h2>
-
-  <p>Tap each card. There's a little something behind every one.</p>
-
-  <div class="flip-grid">
-
-    <div class="flip-card" onclick="flipCard(this)" tabindex="0"
-         onkeydown="if(event.key==='Enter'||event.key===' ')flipCard(this)">
+    <div class="flip-card" onclick="flipCard(this)">
       <div class="flip-inner">
-        <div class="flip-front">
-          <div class="symbol">🧸</div>
-          <h3>My Bunny bear</h3>
-          <div class="tap-hint">TAP TO REVEAL</div>
-        </div>
-        <div class="flip-back">
-          <h3>My Bunny bear</h3>
-          <p>My soft spot, my comfort and one of my favourite people in this world.</p>
-        </div>
+        <div class="flip-front">🐻 Bunny bear</div>
+        <div class="flip-back">One of the sweetest names I have for you. A little softness in my world.</div>
       </div>
     </div>
 
-    <div class="flip-card" onclick="flipCard(this)" tabindex="0"
-         onkeydown="if(event.key==='Enter'||event.key===' ')flipCard(this)">
+    <div class="flip-card" onclick="flipCard(this)">
       <div class="flip-inner">
-        <div class="flip-front">
-          <div class="symbol">❤️</div>
-          <h3>My baby bear</h3>
-          <div class="tap-hint">TAP TO REVEAL</div>
-        </div>
-        <div class="flip-back">
-          <h3>My baby bear</h3>
-          <p>No matter how grown we are, you'll always have a special place in my heart.</p>
-        </div>
+        <div class="flip-front">🤎 Baby bear</div>
+        <div class="flip-back">Because no matter how grown we are, you'll always have this special place in my heart.</div>
       </div>
     </div>
 
-    <div class="flip-card" onclick="flipCard(this)" tabindex="0"
-         onkeydown="if(event.key==='Enter'||event.key===' ')flipCard(this)">
+    <div class="flip-card" onclick="flipCard(this)">
       <div class="flip-inner">
-        <div class="flip-front">
-          <div class="symbol">✨</div>
-          <h3>My Mhiz Leo</h3>
-          <div class="tap-hint">TAP TO REVEAL</div>
-        </div>
-        <div class="flip-back">
-          <h3>My Mhiz Leo</h3>
-          <p>The woman who makes my world brighter just by being in it.</p>
-        </div>
+        <div class="flip-front">👑 Mhiz Leo</div>
+        <div class="flip-back">A name that carries your personality, your presence, and everything that makes you you.</div>
       </div>
     </div>
 
-    <div class="flip-card" onclick="flipCard(this)" tabindex="0"
-         onkeydown="if(event.key==='Enter'||event.key===' ')flipCard(this)">
+    <div class="flip-card" onclick="flipCard(this)">
       <div class="flip-inner">
-        <div class="flip-front">
-          <div class="symbol">🍰</div>
-          <h3>My cup cake</h3>
-          <div class="tap-hint">TAP TO REVEAL</div>
-        </div>
-        <div class="flip-back">
-          <h3>My cup cake</h3>
-          <p>Sweet in ways words could never fully explain.</p>
-        </div>
+        <div class="flip-front">🧁 Cup cake</div>
+        <div class="flip-back">A little sweetness reserved for someone very special.</div>
       </div>
     </div>
 
-    <div class="flip-card" onclick="flipCard(this)" tabindex="0"
-         onkeydown="if(event.key==='Enter'||event.key===' ')flipCard(this)">
+    <div class="flip-card" onclick="flipCard(this)">
       <div class="flip-inner">
-        <div class="flip-front">
-          <div class="symbol">🌹</div>
-          <h3>My favourite trouble</h3>
-          <div class="tap-hint">TAP TO REVEAL</div>
-        </div>
-        <div class="flip-back">
-          <h3>My favourite trouble</h3>
-          <p>Even when you drive me crazy, I wouldn't trade our story for anything.</p>
-        </div>
+        <div class="flip-front">😄 Favourite trouble</div>
+        <div class="flip-back">You can be a handful sometimes, but you're my favourite kind of trouble.</div>
       </div>
     </div>
 
-    <div class="flip-card" onclick="flipCard(this)" tabindex="0"
-         onkeydown="if(event.key==='Enter'||event.key===' ')flipCard(this)">
+    <div class="flip-card" onclick="flipCard(this)">
       <div class="flip-inner">
-        <div class="flip-front">
-          <div class="symbol">💌</div>
-          <h3>My favourite notification</h3>
-          <div class="tap-hint">TAP TO REVEAL</div>
-        </div>
-        <div class="flip-back">
-          <h3>My favourite notification</h3>
-          <p>The one name I never get tired of seeing light up my screen.</p>
-        </div>
+        <div class="flip-front">📱 Favourite notification</div>
+        <div class="flip-back">Because seeing your name light up my screen still means something special.</div>
       </div>
     </div>
 
   </div>
 </section>
 
-<!-- MUSIC -->
+<!-- OUR SONG -->
 
-<section id="our-song">
-
-  <div class="eyebrow">A song for us</div>
-
-  <h2>Press play, <span class="gold">my love.</span></h2>
-
-  <p>One song. A thousand feelings.</p>
-
-  <p class="gold">Godspeed — Frank Ocean</p>
-
-  <p class="small">
-    Add your legally obtained audio file named
-    <strong>godspeed.mp3</strong> to the same folder as index.html.
-  </p>
-
-  <button class="btn" onclick="toggleMusic()">
-    ♫ PLAY OUR SONG
-  </button>
-
-  <audio id="ourSong" src="godspeed.mp3" loop preload="none"></audio>
-
-  <p id="musicStatus" class="small"></p>
-
-</section>
-
-<!-- FINAL MESSAGE -->
-
-<section class="final-message">
-
-  <div class="hero-rose">🌹</div>
-
-  <div class="eyebrow">One more thing</div>
-
-  <h2>Whatever tomorrow brings,</h2>
-
-  <h1 class="gold">I'm glad it's you.</h1>
-
-  <p>
-    Here's to more laughter, more memories, more learning,
-    and more life together.
-  </p>
-
+<section id="song">
+  <h2 class="section-title">A Song for Us</h2>
   <div class="divider"></div>
 
-  <p class="date">HAPPY FIRST WEDDING ANNIVERSARY</p>
+  <div class="music-card">
+    <div class="music-icon">🎵</div>
+    <h3>Godspeed · Frank Ocean</h3>
+    <p>A little soundtrack for a love that means so much.</p>
 
-  <p>November 5, 2026</p>
+    <audio id="ourSong" src="godspeed.mp3" loop preload="none"></audio>
 
-  <h2>Forever yours. ❤️</h2>
+    <button class="gold-button" id="musicButton" onclick="toggleMusic()">
+      ▶ Play our song
+    </button>
 
-  <div class="hero-rose">🌹</div>
-
+    <p id="musicMessage" style="font-size:12px;margin-top:15px;">
+      Press play to listen.
+    </p>
+  </div>
 </section>
 
+<!-- ENDING -->
+
+<div class="ending">
+  <div style="font-size:45px;margin-bottom:15px;">🌹 ❤️ 🌹</div>
+  <h2>Whatever tomorrow brings,<br>I'm glad it's you.</h2>
+  <p>
+    Thank you for being part of my story.
+    Here's to us, to everything we've shared,
+    and to all the memories still waiting for us.
+  </p>
+  <p style="color:var(--gold);margin-top:25px;font-size:20px;">
+    I love you. Happy first anniversary, babe. ❤️
+  </p>
+</div>
+
 <footer>
-  Made with love, for my favourite person.
-  <br><br>
-  <span class="gold">05 · 11 · 2026</span>
+  Made with love, for you. · November 5, 2026
 </footer>
 
 </div>
 
-<!-- FLOATING MUSIC CONTROL -->
-
-<div id="musicControl" class="music-player hidden">
-  <button onclick="toggleMusic()" id="musicButton" aria-label="Play or pause music">♫</button>
-  <span>OUR SONG</span>
-</div>
-
 <script>
 
-// PASSWORD SCREEN
-
-function showPassword() {
-  document.getElementById('passwordArea').classList.remove('hidden');
-  document.getElementById('pin').focus();
-}
+/* PASSWORD */
 
 function unlock() {
-  const pin = document.getElementById('pin').value;
+  const entered = document.getElementById("password").value;
+  const message = document.getElementById("passwordMessage");
 
-  if (pin === '05112025') {
-    document.getElementById('gate').style.display = 'none';
-    document.getElementById('main').style.display = 'block';
-    document.getElementById('musicControl').classList.remove('hidden');
-
-    window.scrollTo(0,0);
+  if (entered === "05112025") {
+    document.getElementById("gate").classList.add("hidden");
+    document.getElementById("website").classList.remove("hidden");
     startHearts();
   } else {
-    document.getElementById('message').textContent =
-      'Not quite, my love. Try the date that changed everything. ❤️';
+    message.textContent = "Not quite, my love. Try our special date. ❤️";
   }
 }
 
-document.getElementById('pin').addEventListener('keydown', function(e) {
-  if (e.key === 'Enter') unlock();
+document.getElementById("password").addEventListener("keydown", function(e) {
+  if (e.key === "Enter") unlock();
 });
 
-// LETTER ENVELOPE
-
-function openLetter() {
-  document.getElementById('letterText').classList.toggle('open');
-}
-
-// FLIP CARDS
+/* FLIP CARDS */
 
 function flipCard(card) {
-  card.classList.toggle('flipped');
+  card.classList.toggle("flipped");
 }
 
-// PHOTO PREVIEWS
+/* MUSIC */
 
-function preview(input, imageId, placeholderId) {
-  if (input.files && input.files[0]) {
-    const file = input.files[0];
-
-    if (!file.type.startsWith('image/')) return;
-
-    const image = document.getElementById(imageId);
-    const placeholder = document.getElementById(placeholderId);
-
-    image.src = URL.createObjectURL(file);
-    image.style.display = 'block';
-    placeholder.style.display = 'none';
-  }
-}
-
-// MUSIC PLAYER
-
-const song = document.getElementById('ourSong');
-
-async function toggleMusic() {
-  const status = document.getElementById('musicStatus');
-  const button = document.getElementById('musicButton');
+function toggleMusic() {
+  const song = document.getElementById("ourSong");
+  const button = document.getElementById("musicButton");
+  const message = document.getElementById("musicMessage");
 
   if (song.paused) {
-    try {
-      await song.play();
-      status.textContent = 'Now playing our song ❤️';
-      button.textContent = 'Ⅱ';
-    } catch (error) {
-      status.textContent =
-        'Please add godspeed.mp3 to your website folder first.';
-    }
+    song.play().then(() => {
+      button.textContent = "❚❚ Pause our song";
+      message.textContent = "Playing a little song for us. ❤️";
+    }).catch(() => {
+      message.textContent = "Please check that godspeed.mp3 is uploaded beside index.html.";
+    });
   } else {
     song.pause();
-    status.textContent = 'Our song is paused.';
-    button.textContent = '♫';
+    button.textContent = "▶ Play our song";
+    message.textContent = "Paused.";
   }
 }
 
-song.addEventListener('ended', function() {
-  button.textContent = '♫';
+document.getElementById("ourSong").addEventListener("ended", function() {
+  document.getElementById("musicButton").textContent = "▶ Play our song";
 });
 
-// FLOATING HEARTS AND ROSE PETALS
-
-let animationStarted = false;
+/* FLOATING HEARTS AND ROSE PETALS */
 
 function startHearts() {
-  if (animationStarted) return;
-  animationStarted = true;
+  const symbols = ["❤️", "💕", "🌹", "💗", "✨"];
 
-  const symbols = ['❤️','💕','💗','🌹','✨','♡'];
-
-  setInterval(function() {
-    const item = document.createElement('div');
-    item.className = 'floating';
-    item.textContent = symbols[
-      Math.floor(Math.random() * symbols.length)
-    ];
-
-    item.style.left = Math.random() * 100 + 'vw';
-    item.style.fontSize = (13 + Math.random() * 20) + 'px';
-    item.style.animationDuration = (8 + Math.random() * 8) + 's';
+  setInterval(() => {
+    const item = document.createElement("div");
+    item.className = "floating";
+    item.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+    item.style.left = Math.random() * 100 + "vw";
+    item.style.fontSize = (14 + Math.random() * 16) + "px";
+    item.style.animationDuration = (7 + Math.random() * 6) + "s";
 
     document.body.appendChild(item);
 
-    setTimeout(function() {
-      item.remove();
-    }, 17000);
-
+    setTimeout(() => item.remove(), 14000);
   }, 1200);
 }
 
