@@ -36,7 +36,7 @@ button { cursor:pointer; }
   background:radial-gradient(ellipse,#6c293c,#351421 48%,#210d14 80%);
 }
 
-/* NEW SEALED ANNIVERSARY INVITATION */
+/* SEALED ANNIVERSARY INVITATION */
 
 .invitation-screen {
   overflow:hidden;
@@ -285,6 +285,7 @@ section {
   grid-template-columns:1fr 1fr;
   gap:15px;
 }
+
 /* STORY CARD FLIP EFFECT */
 
 .story-card {
@@ -358,6 +359,7 @@ section {
   margin:20px auto;
   box-shadow:0 20px 55px #0006;
 }
+
 .seal {
   background:var(--wine);
   border-radius:50%;
@@ -388,7 +390,7 @@ section {
   color:var(--wine);
 }
 
-/* PHOTO GALLERY — SIDE-BY-SIDE, MANUALLY SWIPEABLE MEMORIES */
+/* PHOTO GALLERY — SIDE-BY-SIDE AND MANUALLY SWIPEABLE */
 
 .gallery {
   width:100%;
@@ -429,14 +431,16 @@ section {
   display:block;
   transition:transform .6s ease;
 }
-/* Show the complete sixth photograph */
-.gallery-group .photo:nth-child(6) img {
-  object-fit:contain;
-  background:#2a111c;
-}
 
 .photo:hover img {
   transform:scale(1.06);
+}
+
+/* KEEP THE COMPLETE SIXTH PICTURE VISIBLE */
+
+.gallery-group .photo:nth-child(6) img {
+  object-fit:contain;
+  background:#2a111c;
 }
 
 @media (prefers-reduced-motion:reduce) {
@@ -553,21 +557,35 @@ footer {
   letter-spacing:.15em;
 }
 
-/* SOFT FALLING ROSE PETALS */
+/* GENTLE FALLING ROSES AND HEARTS */
 
 .petal {
   position:fixed;
-  top:-30px;
+  top:-35px;
   z-index:20;
   pointer-events:none;
-  color:#d9a6a9;
-  opacity:.65;
+  opacity:.85;
   animation:fall linear forwards;
+  user-select:none;
+  will-change:transform,opacity;
 }
 
 @keyframes fall {
-  to {
-    transform:translateY(110vh) rotate(480deg);
+  0% {
+    transform:translate3d(0,-5vh,0) rotate(0deg);
+    opacity:0;
+  }
+
+  10% {
+    opacity:.85;
+  }
+
+  90% {
+    opacity:.75;
+  }
+
+  100% {
+    transform:translate3d(var(--drift),110vh,0) rotate(480deg);
     opacity:0;
   }
 }
@@ -591,9 +609,10 @@ footer {
 }
 </style>
 </head>
+
 <body>
 
-<!-- NEW SEALED INVITATION -->
+<!-- SEALED INVITATION -->
 
 <div class="screen invitation-screen" id="welcome">
   <div class="invitation-wrap">
@@ -661,6 +680,7 @@ footer {
     <h1>Happy first<br><em>anniversary,</em><br>Baby Bear.</h1>
 
     <!-- SMALL SPOTIFY PLAYER -->
+
     <div class="spotify-player" style="max-width:280px;margin:15px auto;">
       <iframe
         style="border-radius:10px;display:block;"
@@ -680,6 +700,7 @@ footer {
     <div class="eyebrow">BUNNY BEAR ♥ BABY BEAR</div>
   </div>
 </header>
+
 <section>
   <div class="head">
     <div class="eyebrow">Chapter one · 365 days</div>
@@ -791,6 +812,7 @@ footer {
 It's been kind of a rough year for us two, but somehow, we managed to scale through the hard times, even those moments when we didn't know what we felt towards each other or where we stood. There were days we understood each other, and days we couldn't seem to get it right. We've had our differences, our moments of anger, misunderstandings, and times when loving each other wasn't as easy as it should have been, but through it all, we kept finding our way back to each other.
 
 It's been 365 days of a rollercoaster of love, laughter, anger, and unforgettable memories with you. And though I don't know exactly where this is going, I know this year has been one of learning, not just about you, but about myself, about us, and about what it means to love someone who sees the world differently from you.
+
 We've both had our moments, our flaws, and our ways of handling things that haven't always made it easy for us. We've had to learn each other's differences, adjust in certain ways, unlearn some things, and understand that sometimes, loving each other means seeing beyond our individual perspectives. I know there are things about me you haven't always found easy to deal with, just as there are things about you I've had to understand and make room for. But I think that's part of what makes our journey ours. Neither of us has had it all figured out, and we've both had to find ways to navigate this thing between us.
 
 Looking back, I know there are moments I could have handled better, things I could have said differently, and ways I could have shown up for you better. And I'm sure you have your own moments you look back on, too. I'm sorry for the times my actions or reactions made things harder than they needed to be, and for the discomfort we've both had to experience along the way. Despite everything, I don't want the difficult moments to overshadow the beautiful ones we've shared.
@@ -815,27 +837,49 @@ Happy anniversary, Mon amour. ❤️
     <div class="gallery-track">
 
       <div class="gallery-group">
+
         <div class="photo">
           <img src="IMG_2505.jpg" alt="Our memory">
         </div>
+
         <div class="photo">
           <img src="IMG_9638.jpeg" alt="Our memory">
         </div>
+
         <div class="photo">
           <img src="Tezza-2951.JPG" alt="Our memory">
         </div>
+
         <div class="photo">
           <img src="Tezza-2320.JPG" alt="Our memory">
         </div>
+
         <div class="photo">
           <img src="Tezza-5458.JPG" alt="Our memory">
         </div>
+
         <div class="photo">
           <img src="IMG_3345.heic" alt="Our memory">
         </div>
+
         <div class="photo">
           <img src="IMG_6421.jpeg" alt="Our memory">
         </div>
+
+        <!-- THREE TEMPORARY PLACEHOLDERS -->
+
+        <div class="photo">
+          <img src="IMG_2505.jpg" alt="Our memory">
+        </div>
+
+        <div class="photo">
+          <img src="IMG_9638.jpeg" alt="Our memory">
+        </div>
+
+        <div class="photo">
+          <img src="Tezza-2951.JPG" alt="Our memory">
+        </div>
+
       </div>
 
     </div>
@@ -947,11 +991,12 @@ Happy anniversary, Mon amour. ❤️
 <footer>MADE WITH LOVE · JUST FOR US</footer>
 
 </div>
+
 <script>
 let pin = '';
 const ACCESS_PIN = '05112025';
 
-/* OPEN THE NEW SEALED INVITATION */
+/* OPEN THE SEALED INVITATION */
 
 function openInvitation() {
   const invitation = document.getElementById('invitationButton');
@@ -1020,22 +1065,29 @@ function openLetter() {
   letter.scrollIntoView({behavior:'smooth',block:'center'});
 }
 
-/* SOFT FALLING ROSE PETALS */
+/* GENTLE FALLING ROSES AND HEARTS */
 
 function createPetal() {
   const petal = document.createElement('div');
   petal.className = 'petal';
-  petal.textContent = '✿';
+
+  const decorations = ['🌹','❤️','🌹','💕','🌹','💗'];
+
+  petal.textContent =
+    decorations[Math.floor(Math.random() * decorations.length)];
+
   petal.style.left = Math.random() * 100 + 'vw';
-  petal.style.fontSize = (12 + Math.random() * 12) + 'px';
-  petal.style.animationDuration = (8 + Math.random() * 7) + 's';
+  petal.style.fontSize = (15 + Math.random() * 12) + 'px';
+  petal.style.animationDuration = (10 + Math.random() * 7) + 's';
+  petal.style.setProperty('--drift',(Math.random() * 140 - 70) + 'px');
 
   document.body.appendChild(petal);
 
-  setTimeout(() => petal.remove(),16000);
+  setTimeout(() => petal.remove(),18000);
 }
 
-setInterval(createPetal,1300);
+setInterval(createPetal,1800);
+
 </script>
 
 </body>
