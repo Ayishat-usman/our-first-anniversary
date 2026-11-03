@@ -285,7 +285,6 @@ section {
   grid-template-columns:1fr 1fr;
   gap:15px;
 }
-
 /* STORY CARD FLIP EFFECT */
 
 .story-card {
@@ -389,19 +388,21 @@ section {
   color:var(--wine);
 }
 
-/* PHOTO GALLERY — CONTINUOUS SIDE-BY-SIDE MEMORIES */
+/* PHOTO GALLERY — SIDE-BY-SIDE, MANUALLY SWIPEABLE MEMORIES */
 
 .gallery {
   width:100%;
-  overflow:hidden;
+  overflow-x:auto;
+  overflow-y:hidden;
   position:relative;
+  -webkit-overflow-scrolling:touch;
+  scroll-snap-type:x mandatory;
+  scrollbar-width:thin;
 }
 
 .gallery-track {
   display:flex;
   width:max-content;
-  animation:memoryScroll 48s linear infinite;
-  will-change:transform;
 }
 
 .gallery-group {
@@ -418,6 +419,7 @@ section {
   border:1px solid #c9a56a55;
   overflow:hidden;
   border-radius:3px;
+  scroll-snap-align:start;
 }
 
 .photo img {
@@ -432,20 +434,9 @@ section {
   transform:scale(1.06);
 }
 
-@keyframes memoryScroll {
-  from { transform:translateX(0); }
-  to { transform:translateX(-50%); }
-}
-
-@media (hover:hover) {
-  .gallery:hover .gallery-track {
-    animation-play-state:paused;
-  }
-}
-
 @media (prefers-reduced-motion:reduce) {
-  .gallery-track {
-    animation:none;
+  .photo img {
+    transition:none;
   }
 }
 
@@ -595,7 +586,6 @@ footer {
 }
 </style>
 </head>
-
 <body>
 
 <!-- NEW SEALED INVITATION -->
@@ -796,7 +786,6 @@ footer {
 It's been kind of a rough year for us two, but somehow, we managed to scale through the hard times, even those moments when we didn't know what we felt towards each other or where we stood. There were days we understood each other, and days we couldn't seem to get it right. We've had our differences, our moments of anger, misunderstandings, and times when loving each other wasn't as easy as it should have been, but through it all, we kept finding our way back to each other.
 
 It's been 365 days of a rollercoaster of love, laughter, anger, and unforgettable memories with you. And though I don't know exactly where this is going, I know this year has been one of learning, not just about you, but about myself, about us, and about what it means to love someone who sees the world differently from you.
-
 We've both had our moments, our flaws, and our ways of handling things that haven't always made it easy for us. We've had to learn each other's differences, adjust in certain ways, unlearn some things, and understand that sometimes, loving each other means seeing beyond our individual perspectives. I know there are things about me you haven't always found easy to deal with, just as there are things about you I've had to understand and make room for. But I think that's part of what makes our journey ours. Neither of us has had it all figured out, and we've both had to find ways to navigate this thing between us.
 
 Looking back, I know there are moments I could have handled better, things I could have said differently, and ways I could have shown up for you better. And I'm sure you have your own moments you look back on, too. I'm sorry for the times my actions or reactions made things harder than they needed to be, and for the discomfort we've both had to experience along the way. Despite everything, I don't want the difficult moments to overshadow the beautiful ones we've shared.
@@ -841,31 +830,6 @@ Happy anniversary, Mon amour. ❤️
         </div>
         <div class="photo">
           <img src="IMG_6421.jpeg" alt="Our memory">
-        </div>
-      </div>
-
-      <!-- A second copy makes the scrolling loop seamless -->
-      <div class="gallery-group" aria-hidden="true">
-        <div class="photo">
-          <img src="IMG_2505.jpg" alt="">
-        </div>
-        <div class="photo">
-          <img src="IMG_9638.jpeg" alt="">
-        </div>
-        <div class="photo">
-          <img src="Tezza-2951.JPG" alt="">
-        </div>
-        <div class="photo">
-          <img src="Tezza-2320.JPG" alt="">
-        </div>
-        <div class="photo">
-          <img src="Tezza-5458.JPG" alt="">
-        </div>
-        <div class="photo">
-          <img src="IMG_3345.heic" alt="">
-        </div>
-        <div class="photo">
-          <img src="IMG_6421.jpeg" alt="">
         </div>
       </div>
 
